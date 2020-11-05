@@ -1,0 +1,167 @@
+header .logo {
+  position: relative;
+  height: 45px;
+  width: 45px;
+  float: left;
+  border-radius: 60%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+header nav {
+  background-image: url(../img/bg-header-desktop.svg);
+  height: 80px;
+  background-color: #5ba4a4;
+}
+
+header nav a {
+  color: white;
+}
+
+header nav a:hover {
+  color: white;
+}
+
+header nav .nav-link {
+  margin-top: 22px;
+}
+
+header .nav-link:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-left: 15px;
+}
+
+main .firstSect .modal-content {
+  border-radius: 5px;
+  width: 720px;
+}
+
+main .firstSect .modal-content .modal-header {
+  background-color: #5ba4a4;
+}
+
+main .firstSect .modal-content .modal-header .modal-title {
+  color: white;
+}
+
+main .firstSect .modal-content button {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+  margin-right: 40px;
+}
+
+main .firstSect .modal-content button:hover {
+  background-color: #6abebe;
+  border-color: #6abebe;
+}
+
+main .firstSect .region-btn {
+  float: right;
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+  margin-right: 40px;
+}
+
+main .firstSect .region-btn:hover {
+  background-color: #6abebe;
+  border-color: #6abebe;
+}
+
+main .region {
+  margin-top: 60px;
+  border: transparent 1px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px -10px #7b8e8e;
+          box-shadow: 0px 5px 20px -10px #7b8e8e;
+  font-size: large;
+}
+
+main .region .regionTittle {
+  display: inline-block;
+}
+
+main .region .regionTree {
+  text-decoration: none;
+  color: black;
+}
+
+main .region .card-bodyCo {
+  border: transparent 1px;
+  background-color: white;
+  font-size: large;
+}
+
+main .region .card-bodyCo .countryContainer {
+  border: none;
+  background-color: white;
+  font-size: large;
+}
+
+main .region .card-bodyCo .countryContainer .coTitle {
+  display: inline-block;
+  border: none;
+}
+
+main .region .card-bodyCo .cityContainer {
+  border: transparent 1px;
+  background-color: white;
+}
+
+main .region .card-bodyCo .cityContainer .card-bodyCi {
+  border: transparent 1px;
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 3% 10%;
+      grid-template-columns: 10% 3% 10%;
+}
+
+main .region .fa-edit {
+  border-radius: 5px;
+  width: 15px;
+  height: 18px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 15px;
+}
+
+main .region .fa-edit:hover {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+
+main .region .fa-trash-alt {
+  border-radius: 5px;
+  width: 16px;
+  height: 18px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 10px;
+}
+
+main .region .fa-trash-alt:hover {
+  background-color: #c25b5b;
+  border-color: #5ba4a4;
+}
+
+main .region .fa-plus {
+  border-radius: 50%;
+  width: 17px;
+  height: 18px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 10px;
+}
+
+main .region .fa-plus:hover {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+/*# sourceMappingURL=region.css.map */

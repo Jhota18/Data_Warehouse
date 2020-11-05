@@ -1,0 +1,77 @@
+header img {
+  float: left;
+  border-radius: 60%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+header .loginCaption {
+  color: white;
+  margin-top: 10px;
+}
+
+.logo {
+  position: relative;
+  height: 45px;
+  width: 45px;
+}
+
+nav {
+  background-image: url(../img/bg-header-desktop.svg);
+  height: 80px;
+  background-color: #5ba4a4;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: white;
+}
+
+nav .nav-link {
+  margin-top: 22px;
+}
+
+.form-container {
+  margin: 0 20% 0 20%;
+  margin-top: 5%;
+  border: transparent 1px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px -10px #407777;
+          box-shadow: 0px 5px 20px -10px #407777;
+}
+
+.form-container .loginTitle {
+  text-align: center;
+}
+
+.form-container form {
+  padding: 5%;
+}
+
+.form-container form .btn-align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-container form .btn-align .btn {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+
+.form-container form .btn-align .btn:hover {
+  background-color: #6abebe;
+  border-color: #6abebe;
+}
+
+.form-container form .btn-align .btn:active {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,160 @@
+header {
+    .logo {
+        position: relative;
+        height: 45px;
+        width: 45px;
+        float: left;
+        border-radius: 60%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    nav {
+        background-image: url(../img/bg-header-desktop.svg);
+        height: 80px;
+        background-color: hsl(180, 29%, 50%);
+        a{
+            color: white;
+            &:hover{
+                color: white;
+            }
+        }
+    
+        .nav-link {
+            margin-top: 22px;
+        }
+    }
+    
+    .nav-link {
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    
+}
+
+main{
+    margin-left: 15px;
+
+    .firstSect{
+       
+        .modal-content{
+            border-radius: 5px;
+            width: 720px;
+            .modal-header{
+                background-color: hsl(180, 29%, 50%);
+                
+    
+                .modal-title {
+                    color: white;
+                }
+            }
+            
+            button {
+                background-color: hsl(180, 29%, 50%);
+                border-color: hsl(180, 29%, 50%);
+                margin-right: 40px;
+                &:hover {
+                    background-color: hsl(180, 39%, 58%);
+                    border-color: hsl(180, 39%, 58%);
+                }
+            }
+        }
+        
+        .region-btn{
+            float: right;
+            background-color: hsl(180, 29%, 50%);
+            border-color: hsl(180, 29%, 50%);
+            margin-right: 40px;
+            &:hover {
+                background-color: hsl(180, 39%, 58%);
+                border-color: hsl(180, 39%, 58%);
+            }
+        }
+    
+    }
+
+    .region {
+        margin-top: 60px;
+        border: transparent 1px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 5px 20px -10px hsl(180, 8%, 52%);
+        font-size: large;
+        
+        .regionTittle {
+            display: inline-block;
+        }
+        .regionTree{
+            text-decoration: none;
+            color: black;
+        }
+        .card-bodyCo {
+            border: transparent 1px;
+            background-color: white;
+            font-size: large;
+            
+            .countryContainer {
+                border: none;
+                background-color: white;
+                font-size: large;
+                
+                .coTitle {
+                    display: inline-block;
+                    border: none;
+                }
+            }
+
+            .cityContainer {
+                border: transparent 1px;
+                background-color: white;
+
+                .card-bodyCi {
+                    border: transparent 1px;
+                    background-color: white;
+                    display: grid;
+                    grid-template-columns: 10% 3% 10%;
+                    
+                }
+            }
+        }
+        
+        .fa-edit {
+            border-radius: 5px;
+            width: 15px;
+            height: 18px;
+            align-self: center;
+            margin-left: 15px;
+            &:hover {
+                background-color: hsl(180, 29%, 50%);
+                border-color: hsl(180, 29%, 50%);
+            }
+        }
+
+        .fa-trash-alt {
+            border-radius: 5px;
+            width: 16px;
+            height: 18px;
+            align-self: center;
+            margin-left: 10px;
+            &:hover {
+                background-color: hsl(0, 46%, 56%);
+                border-color: hsl(180, 29%, 50%);
+            }
+        }
+
+        .fa-plus {
+            border-radius: 50%;
+            width: 17px;
+            height: 18px;
+            align-self: center;
+            margin-left: 10px;
+            &:hover {
+                background-color: hsl(180, 29%, 50%);
+                border-color: hsl(180, 29%, 50%);
+            }
+        }
+
+    }
+}    
+

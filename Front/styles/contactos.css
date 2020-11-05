@@ -1,0 +1,338 @@
+header img {
+  float: left;
+  border-radius: 60%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.logo {
+  position: relative;
+  height: 45px;
+  width: 45px;
+}
+
+nav {
+  background-image: url(../img/bg-header-desktop.svg);
+  height: 80px;
+  background-color: #5ba4a4;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: white;
+}
+
+nav a:active {
+  color: black;
+}
+
+nav .nav-link {
+  margin-top: 22px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.fa-search {
+  margin-left: 3px;
+  border: solid 1.5px;
+  padding: 5px;
+  border-radius: 5px;
+  height: 29px;
+}
+
+.fa-search:hover {
+  background-color: #5ba4a4;
+}
+
+.searchInput {
+  width: 490px;
+}
+
+main {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+main .firstSect .modal-content {
+  border-radius: 5px;
+  width: 720px;
+}
+
+main .firstSect .modal-content .modal-header {
+  background-color: #5ba4a4;
+}
+
+main .firstSect .modal-content .modal-header .modal-title {
+  color: white;
+}
+
+main .firstSect .modal-content .modal-body .profilePhoto {
+  border: solid #5ba4a4;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 240px;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto {
+  position: absolute;
+  margin-top: 155px;
+  margin-left: -26px;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto .fa-camera {
+  border: solid 2px #5ba4a4;
+  border-radius: 50%;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto .fa-camera:hover {
+  background-color: #5ba4a4;
+}
+
+main .firstSect .modal-content .modal-body .contactPhoto {
+  display: none;
+}
+
+main .firstSect .modal-content .modal-body .inputRangeN {
+  margin-top: 28px;
+  max-width: 62px;
+}
+
+main .firstSect button {
+  float: right;
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+
+main .firstSect button:hover {
+  background-color: #6abebe;
+  border-color: #6abebe;
+}
+
+main .titles {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 30px;
+  -ms-grid-columns: 5% 5% 15%  15% 15% 18% 15% 12%;
+      grid-template-columns: 5% 5% 15%  15% 15% 18% 15% 12%;
+}
+
+main .titles .select {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column: 1;
+  grid-column: 1/1;
+  margin-left: 34px;
+}
+
+main .titles .contactTitle {
+  font-size: larger;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2/4;
+  text-align: center;
+}
+
+main .titles .countryTitle {
+  font-size: larger;
+  -ms-grid-column: 4;
+  grid-column: 4/4;
+}
+
+main .titles .companyTitle {
+  font-size: larger;
+  -ms-grid-column: 5;
+  grid-column: 5/5;
+}
+
+main .titles .roleTitle {
+  font-size: larger;
+  -ms-grid-column: 6;
+  grid-column: 6/6;
+}
+
+main .titles .interestTitle {
+  font-size: larger;
+  -ms-grid-column: 7;
+  grid-column: 7/7;
+}
+
+main .titles .actionsTitle {
+  font-size: larger;
+  -ms-grid-column: 8;
+  grid-column: 8/8;
+  margin-left: 28px;
+}
+
+main .contact {
+  display: -ms-grid;
+  display: grid;
+  border: transparent 1px;
+  margin-top: 10px;
+  line-height: 0px;
+  -ms-grid-rows: 35px 25px;
+      grid-template-rows: 35px 25px;
+  -ms-grid-columns: 5% 5% 15%  15% 15% 18% 15% 6% 6%;
+      grid-template-columns: 5% 5% 15%  15% 15% 18% 15% 6% 6%;
+  border-left: solid #5ba4a4 5px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px -10px #7b8e8e;
+          box-shadow: 0px 5px 20px -10px #7b8e8e;
+}
+
+main .contact:hover {
+  background-color: rgba(201, 196, 196, 0.836);
+}
+
+main .contact .selectCont {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  margin-left: 28px;
+}
+
+main .contact .photo {
+  border-radius: 90%;
+  width: 50px;
+  height: 30px;
+  margin-top: 15px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+main .contact .name {
+  -ms-grid-column: 3;
+  grid-column: 3/3;
+  -ms-grid-row: 1;
+  grid-row: 1/1;
+  margin-right: 20px;
+  font-size: larger;
+  text-align: center;
+}
+
+main .contact .email {
+  -ms-grid-column: 3;
+  grid-column: 3/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  margin-right: 20px;
+  text-align: center;
+  color: gray;
+}
+
+main .contact .country {
+  -ms-grid-column: 4;
+  grid-column: 4/4;
+  -ms-grid-row: 1;
+  grid-row: 1/1;
+  font-size: larger;
+  margin-top: auto;
+}
+
+main .contact .region {
+  -ms-grid-column: 4;
+  grid-column: 4/4;
+  -ms-grid-row: 2;
+  grid-row: 2/2;
+  margin-top: -2px;
+  color: gray;
+}
+
+main .contact .company {
+  -ms-grid-column: 5;
+  grid-column: 5/5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  font-size: larger;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main .contact .role {
+  -ms-grid-column: 6;
+  grid-column: 6/6;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  font-size: larger;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main .contact .progress {
+  -ms-grid-column: 7;
+  grid-column: 7/7;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 9px;
+  width: 70%;
+}
+
+main .contact .fa-edit {
+  -ms-grid-column: 8;
+  grid-column: 8/8;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 50px;
+  border-radius: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+main .contact .fa-edit:hover {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+
+main .contact .fa-trash-alt {
+  -ms-grid-column: 9;
+  grid-column: 9/9;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 25px;
+  border-radius: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+main .contact .fa-trash-alt:hover {
+  background-color: #c25b5b;
+  border-color: #5ba4a4;
+}
+
+@media screen and (max-width: 1084px) {
+  main .contact .email {
+    margin-top: 12px;
+  }
+}
+/*# sourceMappingURL=contactos.css.map */

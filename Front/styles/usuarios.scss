@@ -1,0 +1,227 @@
+header {
+    img{
+        float: left;
+        border-radius: 60%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+}
+.logo {
+    position: relative;
+    height: 45px;
+    width: 45px;
+}
+
+nav {
+    background-image: url(../img/bg-header-desktop.svg);
+    height: 80px;
+    background-color: hsl(180, 29%, 50%);
+    a{
+        color: white;
+        &:hover{
+            color: white;
+        }
+    }
+
+    .nav-link {
+        margin-top: 22px;
+    }
+}
+
+.nav-link {
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.fa-search {
+    margin-left: 3px;
+    border: solid 1.5px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 29px;
+    &:hover{
+        background-color:  hsl(180, 29%, 50%);
+    }
+    
+}
+main{
+    margin-left: 15px;
+
+    .firstSect{
+        .searchUsersInput{
+            width: 490px;
+        }
+        .modal-content{
+            border-radius: 5px;
+            width: 720px;
+            .modal-header{
+                background-color: hsl(180, 29%, 50%);
+                
+    
+                .modal-title {
+                    color: white;
+                }
+            }
+    
+            .modal-body {
+    
+                .profilePhoto{
+                    border: solid  hsl(180, 29%, 50%);
+                    border-radius: 50%;
+                    width: 200px;
+                    height: 200px;
+                    margin-left: 240px;
+                   
+                }
+    
+                .labelPhoto {
+                    position: absolute;
+                    margin-top: 155px;
+                    margin-left: -26px;
+    
+                    .fa-camera {
+                        border: solid 2px hsl(180, 29%, 50%);
+                        border-radius: 50%;
+    
+                        &:hover{
+                            background-color: hsl(180, 29%, 50%);
+                        }
+                    }
+                }
+    
+                .contactPhoto {
+                    display: none;
+                }
+            }
+        }
+        
+        button{
+            float: right;
+            background-color: hsl(180, 29%, 50%);
+            border-color: hsl(180, 29%, 50%);
+            margin-right: 40px;
+            &:hover {
+                background-color: hsl(180, 39%, 58%);
+                border-color: hsl(180, 39%, 58%);
+            }
+        }
+    
+    }
+    
+    .usersTitles{
+        display: grid;
+        margin-top: 40px;
+        grid-template-columns: 5% 25% 25% 20% 20% 5%;
+    
+        .select{
+            grid-column: 1/2;
+            margin-left: 34px;
+            margin-right: 10px;
+            align-self: center;
+        }
+    
+        .userName{
+            font-size: larger;
+            grid-column: 2/3;
+        }
+        .userLastName {
+            font-size: larger;
+            grid-column: 3/4;
+            
+        }
+        .userEmail {
+            font-size: larger;
+            grid-column: 4/5;
+            
+        }
+        .userProfile {
+            font-size: larger;
+            grid-column: 5/6;
+            
+        }
+       
+    
+        
+    }
+
+    .user{
+        display: grid;
+        border: transparent 1px;
+        margin-top: 10px;
+        line-height: 0px;
+        grid-template-rows: 35px;
+        grid-template-columns: 5% 25% 25% 20% 20% 2.5% 2.5%;
+        border-left: solid hsl(180, 29%, 50%) 5px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 5px 20px -10px hsl(180, 8%, 52%);
+        &:hover {
+            background-color: rgba(201, 196, 196, 0.836);
+        }
+
+        .selectCont{
+            align-self: center;
+            grid-column: 1/2;
+            grid-row: 1/2;
+            margin-left: 28px;
+        }
+
+        .name {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            margin-right: 20px;
+            font-size: larger;
+            margin-top: auto;
+        }
+
+        .lastName {
+            grid-column: 3/4;
+            grid-row: 1/2;
+            margin-right: 20px;
+            font-size: larger;
+            margin-top: auto;
+        }
+        .email {
+            grid-column: 4/5;
+            grid-row: 1/2;
+            font-size: larger;
+            margin-top: auto;
+        }
+        .profile {
+            grid-column: 5/6;
+            grid-row: 1/2;
+            font-size: larger;
+            margin-top: auto;
+        }
+
+        .fa-edit {
+            border-radius: 5px;
+            grid-column: 6/7;
+            grid-row: 1/2;
+            width: 15px;
+            height: 15px;
+            align-self: center;
+            &:hover {
+                background-color: hsl(180, 29%, 50%);
+                border-color: hsl(180, 29%, 50%);
+            }
+        }
+
+        .fa-trash-alt {
+            border-radius: 5px;
+            grid-column: 7/8;
+            grid-row: 1/2;
+            width: 16px;
+            height: 16px;
+            align-self: center;
+            &:hover {
+                background-color: hsl(0, 46%, 56%);
+                border-color: hsl(180, 29%, 50%);
+            }
+        }
+        
+        
+    }
+
+}

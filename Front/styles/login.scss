@@ -1,0 +1,65 @@
+header {
+    img{
+        float: left;
+        border-radius: 60%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+    .loginCaption {
+        color: white;
+        margin-top: 10px;
+    }
+}
+.logo {
+    position: relative;
+    height: 45px;
+    width: 45px;
+}
+
+nav {
+    background-image: url(../img/bg-header-desktop.svg);
+    height: 80px;
+    background-color: hsl(180, 29%, 50%);
+    a{
+        color: white;
+        &:hover{
+            color: white;
+        }
+    }
+
+    .nav-link {
+        margin-top: 22px;
+    }
+}
+
+.form-container{
+    margin: 0 20% 0 20%;
+    margin-top: 5%;
+    border: transparent 1px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 20px -10px hsl(180, 30%, 36%);
+
+    .loginTitle {
+        text-align: center;
+    }
+
+    form {
+        padding: 5%;
+        .btn-align {
+            display: flex;
+            justify-content: center;
+            .btn{
+                background-color: hsl(180, 29%, 50%);
+                border-color: hsl(180, 29%, 50%);
+                &:hover {
+                    background-color: hsl(180, 39%, 58%);
+                    border-color: hsl(180, 39%, 58%);
+                }
+                &:active{
+                    background-color: hsl(180, 29%, 50%);
+                    border-color: hsl(180, 29%, 50%);
+                }
+            }
+        }
+    }
+}

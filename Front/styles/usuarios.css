@@ -1,0 +1,274 @@
+header img {
+  float: left;
+  border-radius: 60%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.logo {
+  position: relative;
+  height: 45px;
+  width: 45px;
+}
+
+nav {
+  background-image: url(../img/bg-header-desktop.svg);
+  height: 80px;
+  background-color: #5ba4a4;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: white;
+}
+
+nav .nav-link {
+  margin-top: 22px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.fa-search {
+  margin-left: 3px;
+  border: solid 1.5px;
+  padding: 5px;
+  border-radius: 5px;
+  height: 29px;
+}
+
+.fa-search:hover {
+  background-color: #5ba4a4;
+}
+
+main {
+  margin-left: 15px;
+}
+
+main .firstSect .searchUsersInput {
+  width: 490px;
+}
+
+main .firstSect .modal-content {
+  border-radius: 5px;
+  width: 720px;
+}
+
+main .firstSect .modal-content .modal-header {
+  background-color: #5ba4a4;
+}
+
+main .firstSect .modal-content .modal-header .modal-title {
+  color: white;
+}
+
+main .firstSect .modal-content .modal-body .profilePhoto {
+  border: solid #5ba4a4;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 240px;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto {
+  position: absolute;
+  margin-top: 155px;
+  margin-left: -26px;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto .fa-camera {
+  border: solid 2px #5ba4a4;
+  border-radius: 50%;
+}
+
+main .firstSect .modal-content .modal-body .labelPhoto .fa-camera:hover {
+  background-color: #5ba4a4;
+}
+
+main .firstSect .modal-content .modal-body .contactPhoto {
+  display: none;
+}
+
+main .firstSect button {
+  float: right;
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+  margin-right: 40px;
+}
+
+main .firstSect button:hover {
+  background-color: #6abebe;
+  border-color: #6abebe;
+}
+
+main .usersTitles {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 40px;
+  -ms-grid-columns: 5% 25% 25% 20% 20% 5%;
+      grid-template-columns: 5% 25% 25% 20% 20% 5%;
+}
+
+main .usersTitles .select {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  margin-left: 34px;
+  margin-right: 10px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main .usersTitles .userName {
+  font-size: larger;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+main .usersTitles .userLastName {
+  font-size: larger;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
+main .usersTitles .userEmail {
+  font-size: larger;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+}
+
+main .usersTitles .userProfile {
+  font-size: larger;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 1;
+  grid-column: 5/6;
+}
+
+main .user {
+  display: -ms-grid;
+  display: grid;
+  border: transparent 1px;
+  margin-top: 10px;
+  line-height: 0px;
+  -ms-grid-rows: 35px;
+      grid-template-rows: 35px;
+  -ms-grid-columns: 5% 25% 25% 20% 20% 2.5% 2.5%;
+      grid-template-columns: 5% 25% 25% 20% 20% 2.5% 2.5%;
+  border-left: solid #5ba4a4 5px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px -10px #7b8e8e;
+          box-shadow: 0px 5px 20px -10px #7b8e8e;
+}
+
+main .user:hover {
+  background-color: rgba(201, 196, 196, 0.836);
+}
+
+main .user .selectCont {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  margin-left: 28px;
+}
+
+main .user .name {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  margin-right: 20px;
+  font-size: larger;
+  margin-top: auto;
+}
+
+main .user .lastName {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  margin-right: 20px;
+  font-size: larger;
+  margin-top: auto;
+}
+
+main .user .email {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  font-size: larger;
+  margin-top: auto;
+}
+
+main .user .profile {
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 1;
+  grid-column: 5/6;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  font-size: larger;
+  margin-top: auto;
+}
+
+main .user .fa-edit {
+  border-radius: 5px;
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 1;
+  grid-column: 6/7;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 15px;
+  height: 15px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main .user .fa-edit:hover {
+  background-color: #5ba4a4;
+  border-color: #5ba4a4;
+}
+
+main .user .fa-trash-alt {
+  border-radius: 5px;
+  -ms-grid-column: 7;
+  -ms-grid-column-span: 1;
+  grid-column: 7/8;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 16px;
+  height: 16px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main .user .fa-trash-alt:hover {
+  background-color: #c25b5b;
+  border-color: #5ba4a4;
+}
+/*# sourceMappingURL=usuarios.css.map */
