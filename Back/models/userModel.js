@@ -19,10 +19,6 @@ const userModel = new Schema(
       type: String,
       required: true,
     },
-    password_confirm: {
-      type: String,
-      required: true,
-    },
     rol: {
       type: String,
       required: true,

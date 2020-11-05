@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
+
 
 const countryModel = new Schema(
   {
@@ -17,4 +17,4 @@ const countryModel = new Schema(
 
 
 
-module.exports = model("City", countryModel);
+module.exports = model("Country", countryModel);

@@ -1,12 +1,12 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
+
 
 const contactModel = new Schema(
   {
     img: {
-        type: String,
-        required: true,
-    },  
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -17,7 +17,7 @@ const contactModel = new Schema(
     },
     role: {
       type: String,
-      unique: true,
+      required: true,
     },
     email: {
       type: String,
@@ -28,24 +28,24 @@ const contactModel = new Schema(
       required: true,
     },
     region: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     country: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     city: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     address: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     interest: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     }
   },
   {

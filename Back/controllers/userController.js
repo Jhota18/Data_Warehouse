@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 require("dotenv").config();
 
 const signUp = async (req, res) => {
-  const { username, email, password, rol } = req.body;
+  const { username, email, password, password_confirm, role } = req.body;
 
   const emailExist = await User.findOne({ email: req.body.email });
   if (emailExist){
@@ -14,15 +14,12 @@ const signUp = async (req, res) => {
     username,
     email,
     password: await User.encryptPassword(password),
+    password_confirm: await User.encryptPassword(password_confirm),
     rol
   });
 
   const savedUser = await newUser.save();
   console.log(savedUser);
-
-//   const token = jwt.sign({ id: savedUser._id }, process.env.S, {
-//     expiresIn: 86400, // 24 hours
-//   });
 
   res.status(200).json('Usuario creado exitosamente');
 };

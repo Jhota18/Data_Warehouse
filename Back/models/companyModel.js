@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
+
 
 const companyModel = new Schema(
   {
@@ -9,16 +9,16 @@ const companyModel = new Schema(
       required: true,
     },
     country: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     city: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     address: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
       type: String,

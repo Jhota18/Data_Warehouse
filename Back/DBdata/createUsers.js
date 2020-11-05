@@ -8,8 +8,8 @@ const createUser = async () => {
     if (count > 0) return;
 
     const values = await Promise.all([
-      new User({ name: "Jhonatan", lastname: "Gomez", email:"jhonatan@correo.com", password: await User.encryptPassword("123456"), password_confirm: await User.encryptPassword("123456"), rol: "admin" }).save(),
-      new User({ name: "Valeria", lastname: "Alzate", email:"valeria@correo.com", password: await User.encryptPassword("000000"), password_confirm: await User.encryptPassword("000000"), rol: "user" }).save(),
+      new User({ name: "Jhonatan", lastname: "Gomez", email:"jhonatan@correo.com", password: await User.encryptPassword("123456"), rol: "admin" }).save(),
+      new User({ name: "Valeria", lastname: "Alzate", email:"valeria@correo.com", password: await User.encryptPassword("000000"), rol: "user" }).save(),
     ]);
 
     console.log(values);

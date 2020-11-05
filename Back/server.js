@@ -22,6 +22,7 @@ require('./DBdata/createContact');
 require('./DBdata/createCompany');
 require('./DBdata/createRegion');
 require('./DBdata/createCity');
+require('./DBdata/createCountry');
 
 
 //ROUTES REQUIRE
