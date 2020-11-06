@@ -130,28 +130,108 @@ main{
         }
 
         .contactTitle{
-            font-size: larger;
+            display: flex;
+            justify-content: center;
             grid-column: 2/4;
-            text-align: center;
+            h3 {
+                font-size: larger;
+            }
+            .iconsContainer{
+                display: flex;
+                flex-flow: column;
+                margin-left: 7px;
+                
+                .fa-sort-up {
+                    margin-bottom: -10px;
+                    z-index: 20;
+                }
+
+                .fa-sort-down {
+                    
+                    z-index: 20;
+                }
+
+            }
         }
         .countryTitle {
-            font-size: larger;
             grid-column: 4/4;
+            display: flex;
+            justify-content: center;
+
+            h3 {
+                font-size: larger;
+            }
+            .iconsContainer{
+                display: flex;
+                flex-flow: column;
+                margin-left: 7px;
+                .fa-sort-up {
+                    margin-bottom: -12px;
+                }
+
+            }
             
         }
         .companyTitle {
-            font-size: larger;
             grid-column: 5/5;
+            display: flex;
+            justify-content: center;
+
+            h3 {
+                font-size: larger;
+            }
+
+            .iconsContainer{
+                display: flex;
+                flex-flow: column;
+                margin-left: 7px;
+                .fa-sort-up {
+                    margin-bottom: -12px;
+                }
+
+            }
             
         }
         .roleTitle {
-            font-size: larger;
             grid-column: 6/6;
+            display: flex;
+            justify-content: center;
+
+            h3 {
+                font-size: larger;
+            }
+
+            .iconsContainer{
+                display: flex;
+                flex-flow: column;
+                margin-left: 7px;
+                
+                .fa-sort-up {
+                    margin-bottom: -12px;
+                }
+
+            }
             
         }
         .interestTitle {
-            font-size: larger;
             grid-column: 7/7;
+            display: flex;
+            justify-content: center;
+
+            h3 {
+                font-size: larger;
+            }
+
+            .iconsContainer{
+                display: flex;
+                flex-flow: column;
+                margin-left: 7px;
+                z-index: 20;
+                .fa-sort-up {
+                    margin-bottom: -12px;
+                }
+
+            }
             
         }
         .actionsTitle {
