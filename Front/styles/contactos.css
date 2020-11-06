@@ -194,7 +194,7 @@ main .titles .countryTitle .iconsContainer {
 }
 
 main .titles .countryTitle .iconsContainer .fa-sort-up {
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 }
 
 main .titles .companyTitle {
@@ -224,7 +224,7 @@ main .titles .companyTitle .iconsContainer {
 }
 
 main .titles .companyTitle .iconsContainer .fa-sort-up {
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 }
 
 main .titles .roleTitle {
@@ -254,7 +254,7 @@ main .titles .roleTitle .iconsContainer {
 }
 
 main .titles .roleTitle .iconsContainer .fa-sort-up {
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 }
 
 main .titles .interestTitle {
@@ -285,7 +285,7 @@ main .titles .interestTitle .iconsContainer {
 }
 
 main .titles .interestTitle .iconsContainer .fa-sort-up {
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 }
 
 main .titles .actionsTitle {
