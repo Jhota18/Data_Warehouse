@@ -1,59 +1,60 @@
-const { Schema, model } = require("mongoose");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DB');
 
 
-const contactModel = new Schema(
+const contactModel = sequelize.define(
+  'contacts',
   {
     img: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     name: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     lastname: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     role: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     email: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     company: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     region: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     country: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     city: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     address: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     interest: {
-      type: String,
-      required: true,
+      type: DataTypes.INTEGER,
+			allowNull: false,
     }
   },
   {
-    timestamps: true,
-    versionKey: false,
+    timestamps: true
   }
 );
 
 
 
-module.exports = model("Contact", contactModel);
+module.exports = contactModel;

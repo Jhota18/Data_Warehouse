@@ -1,20 +1,21 @@
-const { Schema, model } = require("mongoose");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DB');
 
 
-const countryModel = new Schema(
+const countryModel = sequelize.define(
+  'countries',
   {
       
     name: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     }
   },
   {
-    timestamps: true,
-    versionKey: false,
+    timestamps: true
   }
 );
 
 
 
-module.exports = model("Country", countryModel);
+module.exports = countryModel;

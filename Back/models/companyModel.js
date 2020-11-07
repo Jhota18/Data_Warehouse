@@ -1,41 +1,42 @@
-const { Schema, model } = require("mongoose");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../DB');
 
 
-const companyModel = new Schema(
+const companyModel = sequelize.define(
+  'companies',
   {
       
     name: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     country: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     city: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     address: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     email: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     },
     phone: {
-      type: Number,
-      required: true,
+      type: DataTypes.STRING(50),
+			allowNull: false,
     }
     
   },
   {
-    timestamps: true,
-    versionKey: false,
+    timestamps: true
   }
 );
 
 
 
-module.exports = model("Company", companyModel);
+module.exports = companyModel;

@@ -1,42 +1,53 @@
-const { Schema, model } = require("mongoose");
+const { DataTypes} = require('sequelize');
+const sequelize = require('../DB');
 const bcrypt = require("bcryptjs");
 
-const userModel = new Schema(
+
+const userModel = sequelize.define(
+  'users',
   {
     name: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+			allowNull: false,
     },
     lastname: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+			allowNull: false,
     },
     email: {
-      type: String,
-      unique: true,
+      type: DataTypes.STRING,
+			allowNull: false,
     },
     password: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+			allowNull: false,
     },
     rol: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+			allowNull: false,
     },
   },
   {
-    timestamps: true,
-    versionKey: false,
+    timestamps: true
+    // hooks: {
+    //   beforeCreate: function (user) {
+    //     password = user.password;
+    //     console.log(password);
+    //     encryptPassword(password);
+    //   }
+    // }
   }
 );
 
-userModel.statics.encryptPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
 
-userModel.statics.comparePassword = async (password, receivedPassword) => {
+
+comparePassword = async (password, receivedPassword) => {
   return await bcrypt.compare(password, receivedPassword);
 };
 
-module.exports = model("User", userModel);
+
+// userModel.addHook(async (user, options)=>{
+//   password = user.password;
+//   encryptPassword(password);
+// })
+module.exports = userModel;
