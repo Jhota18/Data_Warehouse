@@ -89,6 +89,16 @@ main .firstSect .modal-content .modal-body .labelPhoto .fa-camera:hover {
   background-color: #5ba4a4;
 }
 
+main .firstSect .modal-content .modal-body .passwordMessage {
+  color: red;
+  font-size: small;
+}
+
+main .firstSect .modal-content .modal-body .lackFields {
+  color: red;
+  font-size: small;
+}
+
 main .firstSect .modal-content .modal-body .contactPhoto {
   display: none;
 }

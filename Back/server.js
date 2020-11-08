@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const jwt = require('jsonwebtoken');
 const sequelize = require('./DB');
+const cors = require('cors');
 
 //Express
 const app = express();
@@ -29,12 +30,15 @@ const userRoute= require('./routes/users/userRoute');
 
 
 //ALLOW CORS
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5501");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "PUT", "POST", "GET", "DELETE");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:5500");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Methods", "PUT", "POST", "GET", "DELETE");
+//     next();
+// });
+app.use(cors());
+app.options('*', cors());
+
 
 
 
