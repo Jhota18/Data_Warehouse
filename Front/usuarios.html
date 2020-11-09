@@ -78,15 +78,6 @@
                 </button>
               </div>
               <div class="modal-body">
-                <img
-                  src="img/business-icon-png-1934.png"
-                  alt="photo"
-                  class="profilePhoto"
-                />
-                <label for="contactPhoto" class="labelPhoto"
-                  ><i class="fas fa-camera"></i
-                ></label>
-                <input type="file" id="contactPhoto" class="contactPhoto" />
                 <form id="userForm">
                   <div class="form-row">
                     <div class="form-group col-md-6">
@@ -112,6 +103,7 @@
                         class="form-control"
                         id="inputEmail"
                       />
+                      <p class="emailExist" id="emailExist"></p>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputProfile">Perfil</label>
@@ -158,7 +150,6 @@
                 >
                   Limpiar
                 </button>
-                <!-- <button type="submit" class="btn btn-primary" onclick="addUser()">Guardar Usuario</button> -->
               </div>
             </div>
           </div>
@@ -167,20 +158,83 @@
       <section class="usersList" id="usersList">
         <div class="usersTitles">
           <input type="checkbox" class="select" />
-          <h3 class="userName">Nombres</h3>
-          <h3 class="userLastName">Apellidos</h3>
-          <h3 class="userEmail">Email</h3>
-          <h3 class="userProfile">Perfil</h3>
+          <div class="iconsContainer1">
+            <h3 class="userName">Nombres</h3>
+            <i class="fas fa-sort-up" onclick="sortByNameA()"></i>
+            <i class="fas fa-sort-down" onclick="sortByNameZ()"></i>
+          </div>
+          <div class="iconsContainer2">
+            <h3 class="userLastName">Apellidos</h3>
+            <i class="fas fa-sort-up" onclick="sortByLastNameA()"></i>
+            <i class="fas fa-sort-down" onclick="sortByLastNameZ()"></i>
+          </div>
+          <div class="iconsContainer3">
+            <h3 class="userEmail">Email</h3>
+            <i class="fas fa-sort-up" onclick="sortByEmailA()"></i>
+            <i class="fas fa-sort-down" onclick="sortByEmailZ()"></i>
+          </div>
+          <div class="iconsContainer4">
+            <h3 class="userProfile">Perfil</h3>
+            <i class="fas fa-sort-up" onclick="sortByProfileA()"></i>
+            <i class="fas fa-sort-down" onclick="sortByProfileZ()"></i>
+          </div>
         </div>
+        <div id="usersContainer"></div>
         <!-- <div class="user">
           <input type="checkbox" class="selectCont" />
-          <img src="" alt="" class="photo" />
           <h3 class="name">Juan Alberto</h3>
           <h3 class="lastName">Aristizabal Goez</h3>
           <h3 class="email">juan@correo.com</h3>
           <h3 class="profile">Administrador</h3>
           <i class="fas fa-edit"></i>
-          <i class="far fa-trash-alt"></i>
+          <i
+            class="far fa-trash-alt"
+            data-target="#deleteConfirm"
+            data-toggle="modal"
+          ></i>
+          <div
+            class="modal fade"
+            id="deleteConfirm"
+            data-toggle="modal"
+            tabindex="-1"
+            aria-labelledby="deleteConfirmLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteConfirmLabel">
+                    ¿Está seguro que desea eliminar el usuario?
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                    onclick="deleteUser(this)"
+                  >
+                    SI
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    NO
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="user">
           <input type="checkbox" class="selectCont" />
@@ -190,11 +244,12 @@
           <h3 class="email">Valeria@correo.com</h3>
           <h3 class="profile">Usuario</h3>
           <i class="fas fa-edit"></i>
-          <i class="far fa-trash-alt"></i> -->
-        </div>
+          <i class="far fa-trash-alt"></i>
+        </div> -->
       </section>
     </main>
-    <script src="script/requests.js"></script>
+    <script src="script/users.js"></script>
+    <script src="script/sortUsers.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

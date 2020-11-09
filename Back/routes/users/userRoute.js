@@ -4,7 +4,8 @@ const router = express.Router();
 const authentication = require("../../middlewares/authentication");
 const authorization = require("../../middlewares/authorization");
 
-const { createUser, login } = require("./userController");
+const { createUser, login, deleteUser } = require("./userController");
+const { response } = require("express");
 
 router.post("/signup", (req, res) => {
   const reqUser = req.body;
@@ -40,6 +41,17 @@ router.get("/list", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json("Error interno, por favor intente mas tarde");
+    });
+});
+
+router.delete("/delete", (req, res) => {
+  let email = req.body.email;
+  deleteUser(email)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((error) => {
+      res.status(error).json(error);
     });
 });
 

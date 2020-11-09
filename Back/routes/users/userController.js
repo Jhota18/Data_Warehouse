@@ -64,8 +64,53 @@ const login = (email, password) => {
   });
 };
 
-const getUsers = () => {};
+const deleteUser = (email) => {
+  return new Promise((res, rejc) => {
+    usersModel
+      .destroy({ where: { email: email } })
+      .then((response) => {
+        if (response === 1) {
+          res("Usuario eliminado");
+        } else {
+          rejc({
+            status: 404,
+            message: "Usuario no encontrado, por favor verifique",
+          });
+        }
+      })
+      .then((error) => {
+        rejc({
+          status: 500,
+          message: "Poseemos problemas, por favor intenta mas tarde",
+        });
+      });
+  });
+};
+
+const updateP = (id, data) => {
+  return new Promise((res, rejc) => {
+    usersModel
+      .update(data, { where: { id: id } })
+      .then((response) => {
+        if (response[0] === 1) {
+          res("Usuario actualizado con exito");
+        } else {
+          rejc({
+            status: 404,
+            message: "Datos no encontrados, no se pudo actualizar el usuario.",
+          });
+        }
+      })
+      .catch((error) => {
+        rejc({
+          status: 500,
+          message: "Error interno, por favor intente  mas tarde.",
+        });
+      });
+  });
+};
 module.exports = {
   createUser,
   login,
+  deleteUser,
 };

@@ -66,27 +66,9 @@ main .firstSect .modal-content .modal-header .modal-title {
   color: white;
 }
 
-main .firstSect .modal-content .modal-body .profilePhoto {
-  border: solid #5ba4a4;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-left: 240px;
-}
-
-main .firstSect .modal-content .modal-body .labelPhoto {
-  position: absolute;
-  margin-top: 155px;
-  margin-left: -26px;
-}
-
-main .firstSect .modal-content .modal-body .labelPhoto .fa-camera {
-  border: solid 2px #5ba4a4;
-  border-radius: 50%;
-}
-
-main .firstSect .modal-content .modal-body .labelPhoto .fa-camera:hover {
-  background-color: #5ba4a4;
+main .firstSect .modal-content .modal-body .emailExist {
+  color: red;
+  font-size: small;
 }
 
 main .firstSect .modal-content .modal-body .passwordMessage {
@@ -97,10 +79,6 @@ main .firstSect .modal-content .modal-body .passwordMessage {
 main .firstSect .modal-content .modal-body .lackFields {
   color: red;
   font-size: small;
-}
-
-main .firstSect .modal-content .modal-body .contactPhoto {
-  display: none;
 }
 
 main .firstSect button {
@@ -134,32 +112,68 @@ main .usersTitles .select {
       align-self: center;
 }
 
-main .usersTitles .userName {
-  font-size: larger;
+main .usersTitles .iconsContainer1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
 }
 
-main .usersTitles .userLastName {
+main .usersTitles .iconsContainer1 .userName {
   font-size: larger;
+}
+
+main .usersTitles .iconsContainer2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 7px;
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
   grid-column: 3/4;
 }
 
-main .usersTitles .userEmail {
+main .usersTitles .iconsContainer2 .userLastName {
   font-size: larger;
+}
+
+main .usersTitles .iconsContainer3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
 }
 
-main .usersTitles .userProfile {
+main .usersTitles .iconsContainer3 .userEmail {
   font-size: larger;
+}
+
+main .usersTitles .iconsContainer4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-grid-column: 5;
   -ms-grid-column-span: 1;
   grid-column: 5/6;
+}
+
+main .usersTitles .iconsContainer4 .userProfile {
+  font-size: larger;
+}
+
+main .usersTitles .fa-sort-up {
+  margin-left: 10px;
+  z-index: 20;
+}
+
+main .usersTitles .fa-sort-down {
+  margin-left: -10px;
+  margin-top: 6px;
+  z-index: 20;
 }
 
 main .user {
@@ -280,5 +294,14 @@ main .user .fa-trash-alt {
 main .user .fa-trash-alt:hover {
   background-color: #c25b5b;
   border-color: #5ba4a4;
+}
+
+main .user .modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=usuarios.css.map */
