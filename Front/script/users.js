@@ -5,10 +5,11 @@ let emailExist = document.querySelector(".emailExist");
 let saveUser = document.querySelector("#saveUser");
 let usersList = document.querySelector("#usersContainer");
 let modalYes = document.getElementById("confirmDelete");
-console.log(modalYes);
+
 //RENDER USERS
 let renderUsers = () => {
   fetch("http://localhost:3000/users/list").then((userCard) => {
+    console.log(userCard);
     userCard.json().then((userCard) => {
       userCard.forEach((userC) => {
         const { name, lastname, email, rol } = userC;
@@ -19,8 +20,8 @@ let renderUsers = () => {
             <h3 class="lastName">${lastname}</h3>
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
-            <i class="fas fa-edit" onclick="updateUser()"></i>
-            <i class="far fa-trash-alt" onclick="deleteUser('${email}')" value="${email}"></i>
+            <i class="fas fa-edit" onclick="updateUser('${email}')"></i>
+            <i class="far fa-trash-alt" onclick="deleteUser('${email}')"></i>
         </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
       });
@@ -64,6 +65,7 @@ let getData = () => {
     };
 
     let data = JSON.stringify(data2);
+    console.log(data);
     addUser(data);
   }
 };
@@ -96,7 +98,7 @@ let addUser = (data) => {
             <h3 class="lastName">${lastname}</h3>
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
-            <i class="fas fa-edit" onclick="updateUser()"></i>
+            <i class="fas fa-edit" onclick="updateUser('${email}')"></i>
             <i class="far fa-trash-alt" onclick="deleteUser('${email}')"></i>
           </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
@@ -135,13 +137,21 @@ let deleteUser = (email) => {
         "Content-Type": "application/json",
         //   Authorization: "Bearer " + token,
       },
-    }).then(async (user) => {
-      console.log(user);
+    }).then((user) => {
       location.reload();
     });
   });
 };
 
-let updateUser = () => {
+let updateUser = (emailValue) => {
+  fetch(`http://localhost:3000/users/user/${emailValue}`).then((user) => {
+    user.json().then((userData) => {
+      const { name, lastname, email, rol } = userData;
+      form[0].value = name;
+      form[1].value = lastname;
+      form[2].value = email;
+      form[3].value = rol;
+    });
+  });
   open();
 };

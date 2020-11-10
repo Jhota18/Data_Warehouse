@@ -4,7 +4,13 @@ const router = express.Router();
 const authentication = require("../../middlewares/authentication");
 const authorization = require("../../middlewares/authorization");
 
-const { createUser, login, deleteUser } = require("./userController");
+const {
+  createUser,
+  login,
+  deleteUser,
+  findByEmail,
+  updateP,
+} = require("./userController");
 const { response } = require("express");
 
 router.post("/signup", (req, res) => {
@@ -49,6 +55,31 @@ router.delete("/delete", (req, res) => {
   deleteUser(email)
     .then((response) => {
       res.status(200).json(response);
+    })
+    .catch((error) => {
+      res.status(error).json(error);
+    });
+});
+
+router.get("/user/:email", (req, res) => {
+  // findByEmail(req, res);
+  let email = req.params.email;
+  userModel
+    .findOne({ where: { email: email } })
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((error) => {
+      res.status(error).json(error);
+    });
+});
+
+router.patch("/update", (req, res) => {
+  let email = req.body.email;
+  let data = req.body;
+  updateP(email, data)
+    .then((user) => {
+      res.status(200).json(user);
     })
     .catch((error) => {
       res.status(error).json(error);

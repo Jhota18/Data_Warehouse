@@ -87,10 +87,21 @@ const deleteUser = (email) => {
   });
 };
 
-const updateP = (id, data) => {
+const findByEmail = (req, res) => {
+  let email = req.params.email;
+  usersModel.findOne({ where: { email: email } }).then((user) => {
+    if (user !== null) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json("Usuario no encontrado");
+    }
+  });
+};
+
+const updateP = (email, data) => {
   return new Promise((res, rejc) => {
     usersModel
-      .update(data, { where: { id: id } })
+      .update(data, { where: { email: email } })
       .then((response) => {
         if (response[0] === 1) {
           res("Usuario actualizado con exito");
@@ -113,4 +124,6 @@ module.exports = {
   createUser,
   login,
   deleteUser,
+  findByEmail,
+  updateP,
 };
