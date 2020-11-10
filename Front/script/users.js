@@ -4,14 +4,14 @@ let lackFields = document.querySelector("#lackFields");
 let emailExist = document.querySelector(".emailExist");
 let saveUser = document.querySelector("#saveUser");
 let usersList = document.querySelector("#usersContainer");
-
+let modalYes = document.getElementById("confirmDelete");
+console.log(modalYes);
 //RENDER USERS
 let renderUsers = () => {
   fetch("http://localhost:3000/users/list").then((userCard) => {
     userCard.json().then((userCard) => {
       userCard.forEach((userC) => {
         const { name, lastname, email, rol } = userC;
-        limitFunctionPlus();
         let user = `
           <div class="user">
             <input type="checkbox" class="selectCont" />
@@ -20,55 +20,7 @@ let renderUsers = () => {
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
             <i class="fas fa-edit" onclick="updateUser()"></i>
-            <i class="far fa-trash-alt" onclick="deleteUser(this)"></i>
-            <i
-            class="far fa-trash-alt"
-            data-target="#deleteConfirm${modalNumber}"
-            data-toggle="modal"
-            ></i>
-          <div
-            class="modal fade"
-            id="deleteConfirm${modalNumber}"
-            data-toggle="modal"
-            tabindex="-1"
-            aria-labelledby="deleteConfirmLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="deleteConfirmLabel">
-                    ¿Está seguro que desea eliminar el usuario?
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-dismiss="modal"
-                    onclick="deleteUser(this)"
-                  >
-                    SI
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-dismiss="modal"
-                  >
-                    NO
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <i class="far fa-trash-alt" onclick="deleteUser('${email}')" value="${email}"></i>
         </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
       });
@@ -117,13 +69,6 @@ let getData = () => {
 };
 
 //PETICION PARA CREAR USURARIO
-let modalNumber = 0;
-let limitFunctionPlus = () => {
-  modalNumber += 1;
-};
-let limitFunctionMinus = () => {
-  modalNumber -= 1;
-};
 
 let addUser = (data) => {
   event.preventDefault;
@@ -144,7 +89,6 @@ let addUser = (data) => {
       res.json().then((info) => {
         console.log(info);
         const { name, lastname, email, rol } = info;
-        limitFunctionPlus();
         let user = `
           <div class="user">
             <input type="checkbox" class="selectCont" />
@@ -153,54 +97,7 @@ let addUser = (data) => {
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
             <i class="fas fa-edit" onclick="updateUser()"></i>
-            <i
-              class="far fa-trash-alt"
-              data-target="#deleteConfirm${modalNumber}"
-              
-            ></i>
-            <div
-              class="modal fade"
-              id="deleteConfirm${modalNumber}"
-              data-toggle="modal"
-              tabindex="-1"
-              aria-labelledby="deleteConfirmLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="deleteConfirmLabel">
-                      ¿Está seguro que desea eliminar el usuario?
-                    </h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-dismiss="modal"
-                      onclick="deleteUser(this)"
-                    >
-                      SI
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-dismiss="modal"
-                    >
-                      NO
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <i class="far fa-trash-alt" onclick="deleteUser('${email}')"></i>
           </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
         close();
@@ -215,30 +112,33 @@ let close = () => {
   $("#addUser").modal("hide");
 };
 
-//OPEN MODAL
+//OPEN MODALS
 let open = () => {
   $("#addUser").modal("show");
 };
 
+let openDelete = () => {
+  $("#deleteConfirm").modal("show");
+};
+
 //DELETE USER
-let deleteUser = (value) => {
-  let node1 = value.parentNode;
-  let node2 = node1.closest(".user");
-  let email = node2.childNodes[7].textContent;
+
+let deleteUser = (email) => {
   let objectEmail = { email: email };
   let jsonEmail = JSON.stringify(objectEmail);
-
-  fetch("http://localhost:3000/users/delete", {
-    method: "DELETE",
-    body: jsonEmail,
-    headers: {
-      "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
-    },
-  }).then((user) => {
-    console.log(user);
-    limitFunctionMinus();
-    location.reload();
+  openDelete();
+  modalYes.addEventListener("click", () => {
+    fetch("http://localhost:3000/users/delete", {
+      method: "DELETE",
+      body: jsonEmail,
+      headers: {
+        "Content-Type": "application/json",
+        //   Authorization: "Bearer " + token,
+      },
+    }).then(async (user) => {
+      console.log(user);
+      location.reload();
+    });
   });
 };
 

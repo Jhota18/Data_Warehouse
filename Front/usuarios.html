@@ -180,6 +180,49 @@
           </div>
         </div>
         <div id="usersContainer"></div>
+        <div
+          class="modal fade"
+          id="deleteConfirm"
+          data-toggle="modal"
+          tabindex="-1"
+          aria-labelledby="deleteConfirmLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmLabel">
+                  ¿Está seguro que desea eliminar el usuario?
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="confirmDelete"
+                  data-dismiss="modal"
+                >
+                  SI
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  NO
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- <div class="user">
           <input type="checkbox" class="selectCont" />
           <h3 class="name">Juan Alberto</h3>
@@ -248,8 +291,6 @@
         </div> -->
       </section>
     </main>
-    <script src="script/users.js"></script>
-    <script src="script/sortUsers.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -260,5 +301,7 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="script/users.js"></script>
+    <script src="script/sortUsers.js"></script>
   </body>
 </html>
