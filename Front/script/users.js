@@ -154,4 +154,5 @@ let updateUser = (emailValue) => {
     });
   });
   open();
+  fetch();
 };
