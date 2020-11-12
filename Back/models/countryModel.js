@@ -1,21 +1,21 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../DB');
-
+const { DataTypes } = require("sequelize");
+const sequelize = require("../DB");
+const regionModel = require("./regionModel");
 
 const countryModel = sequelize.define(
-  'countries',
+  "countries",
   {
-      
     name: {
       type: DataTypes.STRING(50),
-			allowNull: false,
-    }
+      allowNull: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
-
+regionModel.hasMany(countryModel);
+countryModel.belongsTo(regionModel);
 
 module.exports = countryModel;

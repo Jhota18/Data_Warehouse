@@ -4,13 +4,7 @@ const router = express.Router();
 const authentication = require("../../middlewares/authentication");
 const authorization = require("../../middlewares/authorization");
 
-const {
-  createUser,
-  login,
-  deleteUser,
-  findByEmail,
-  updateP,
-} = require("./userController");
+const { createUser, login, deleteUser, updateP } = require("./userController");
 const { response } = require("express");
 
 router.post("/signup", (req, res) => {
@@ -74,10 +68,10 @@ router.get("/user/:email", (req, res) => {
     });
 });
 
-router.patch("/update", (req, res) => {
-  let email = req.body.email;
+router.patch("/update/:id", (req, res) => {
+  let id = req.params.id;
   let data = req.body;
-  updateP(email, data)
+  updateP(id, data)
     .then((user) => {
       res.status(200).json(user);
     })

@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const usersModel = require("../../models/userModel");
-const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
 const createUser = (data) => {
@@ -98,26 +97,60 @@ const findByEmail = (req, res) => {
   });
 };
 
-const updateP = (email, data) => {
+const updateP = (id, data) => {
   return new Promise((res, rejc) => {
-    usersModel
-      .update(data, { where: { email: email } })
-      .then((response) => {
-        if (response[0] === 1) {
-          res("Usuario actualizado con exito");
-        } else {
+    if (data.password !== undefined) {
+      bcrypt.hash(data.password, 10, (err, hash) => {
+        if (err) {
           rejc({
-            status: 404,
-            message: "Datos no encontrados, no se pudo actualizar el usuario.",
+            status: 500,
+            message:
+              "Tenemos problemas en el servidor, por favor intente mas tarde",
           });
+        } else {
+          data.password = hash;
+          usersModel
+            .update(data, { where: { id: id } })
+            .then((response) => {
+              if (response[0] === 1) {
+                res("Usuario actualizado con exito");
+              } else {
+                rejc({
+                  status: 404,
+                  message:
+                    "Datos no encontrados, no se pudo actualizar el usuario.",
+                });
+              }
+            })
+            .catch((error) => {
+              rejc({
+                status: 500,
+                message: "Error interno, por favor intente  mas tarde.",
+              });
+            });
         }
-      })
-      .catch((error) => {
-        rejc({
-          status: 500,
-          message: "Error interno, por favor intente  mas tarde.",
-        });
       });
+    } else {
+      usersModel
+        .update(data, { where: { id: id } })
+        .then((response) => {
+          if (response[0] === 1) {
+            res("Usuario actualizado con exito");
+          } else {
+            rejc({
+              status: 404,
+              message:
+                "Datos no encontrados, no se pudo actualizar el usuario.",
+            });
+          }
+        })
+        .catch((error) => {
+          rejc({
+            status: 500,
+            message: "Error interno, por favor intente  mas tarde.",
+          });
+        });
+    }
   });
 };
 module.exports = {

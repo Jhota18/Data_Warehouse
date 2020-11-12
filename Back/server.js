@@ -16,15 +16,17 @@ const contactModel = require("./models/contactModel");
 const countryModel = require("./models/countryModel");
 const regionModel = require("./models/regionModel");
 const userModel = require("./models/userModel");
-cityModel.sync();
+
 companyModel.sync();
 contactModel.sync();
-countryModel.sync();
 regionModel.sync();
+countryModel.sync();
+cityModel.sync();
 userModel.sync();
 
 //ROUTES REQUIRE
 const userRoute = require("./routes/users/userRoute");
+const regionRoute = require("./routes/regions/regionRoute");
 
 //ALLOW CORS
 app.use(cors());
@@ -32,6 +34,7 @@ app.options("*", cors());
 
 //Routes
 app.use("/users", userRoute);
+app.use("/region", regionRoute);
 
 //SERVER PORT
 app.listen(3000, () => {

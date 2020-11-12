@@ -1,20 +1,21 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../DB');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../DB");
+const countryModel = require("./countryModel");
 
 const cityModel = sequelize.define(
-  'cities',
+  "cities",
   {
-      
     name: {
       type: DataTypes.STRING(50),
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
-    timestamps: false
+    timestamps: false,
   }
 );
 
-
+countryModel.hasMany(cityModel);
+cityModel.belongsTo(countryModel);
 
 module.exports = cityModel;

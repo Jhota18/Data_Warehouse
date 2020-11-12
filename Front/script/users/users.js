@@ -5,6 +5,7 @@ let emailExist = document.querySelector(".emailExist");
 let saveUser = document.querySelector("#saveUser");
 let usersList = document.querySelector("#usersContainer");
 let modalYes = document.getElementById("confirmDelete");
+let updateBtn = document.querySelector(".modal-footer");
 
 //RENDER USERS
 let renderUsers = () => {
@@ -20,7 +21,7 @@ let renderUsers = () => {
             <h3 class="lastName">${lastname}</h3>
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
-            <i class="fas fa-edit" onclick="updateUser('${email}')"></i>
+            <i class="fas fa-edit" onclick="getUserInfo('${email}')"></i>
             <i class="far fa-trash-alt" onclick="deleteUser('${email}')"></i>
         </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
@@ -98,7 +99,7 @@ let addUser = (data) => {
             <h3 class="lastName">${lastname}</h3>
             <h3 class="email">${email}</h3>
             <h3 class="profile">${rol}</h3>
-            <i class="fas fa-edit" onclick="updateUser('${email}')"></i>
+            <i class="fas fa-edit" onclick="getUserInfo('${email}')"></i>
             <i class="far fa-trash-alt" onclick="deleteUser('${email}')"></i>
           </div>`;
         usersList.insertAdjacentHTML("beforeend", user);
@@ -143,16 +144,58 @@ let deleteUser = (email) => {
   });
 };
 
-let updateUser = (emailValue) => {
+//UPDATE USERS
+let getUserInfo = (emailValue) => {
   fetch(`http://localhost:3000/users/user/${emailValue}`).then((user) => {
     user.json().then((userData) => {
-      const { name, lastname, email, rol } = userData;
+      const { id, name, lastname, email, rol } = userData;
       form[0].value = name;
       form[1].value = lastname;
       form[2].value = email;
       form[3].value = rol;
+      open();
+      saveUser.onclick = "";
+      saveUser.addEventListener("click", () => {
+        let formData = Array.from(form).reduce(
+          (acc, input) => ({
+            ...acc,
+            [input.id]: input.value,
+          }),
+          {}
+        );
+        for (const key in formData) {
+          if (formData[key] === "") {
+            delete formData[key];
+          }
+        }
+        let data2 = {
+          name: formData.inputUserName,
+          lastname: formData.inputUserLastName,
+          email: formData.inputEmail,
+          rol: formData.inputProfile,
+          password: formData.inputPassword,
+        };
+
+        let data = JSON.stringify(data2);
+        updateUser(id, data);
+        close();
+        clear();
+      });
     });
   });
-  open();
-  fetch();
+};
+
+let updateUser = (id, data) => {
+  fetch(`http://localhost:3000/users/update/${id}`, {
+    method: "PATCH",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer " + token,
+    },
+  }).then((updatedUser) => {
+    updatedUser.json().then((userUpd) => {
+      console.log(userUpd);
+    });
+  });
 };

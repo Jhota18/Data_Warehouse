@@ -1,20 +1,18 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../DB');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../DB");
+const countryModel = require("./countryModel");
 
 const regionModel = sequelize.define(
-  'regions',
+  "regions",
   {
-      
     name: {
       type: DataTypes.STRING(50),
-			allowNull: false,
-    }
+      allowNull: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
-
-
 
 module.exports = regionModel;
