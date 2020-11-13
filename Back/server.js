@@ -27,6 +27,7 @@ userModel.sync();
 //ROUTES REQUIRE
 const userRoute = require("./routes/users/userRoute");
 const regionRoute = require("./routes/regions/regionRoute");
+const countryRoute = require("./routes/countries/countryRoute");
 
 //ALLOW CORS
 app.use(cors());
@@ -35,6 +36,7 @@ app.options("*", cors());
 //Routes
 app.use("/users", userRoute);
 app.use("/region", regionRoute);
+app.use("/country", countryRoute);
 
 //SERVER PORT
 app.listen(3000, () => {

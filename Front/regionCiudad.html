@@ -90,8 +90,53 @@
                   type="button"
                   class="btn btn-primary"
                   onclick="getData()"
+                  id="addRegionBtn"
                 >
                   Guardar Región
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- MODAL COUNTRY -->
+        <div
+          class="modal fade"
+          id="addCountry"
+          tabindex="-1"
+          aria-labelledby="ModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Nuevo Pais</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="countryName">Nombre del País</label>
+                      <input type="text" class="form-control" id="countryName" />
+                      <p id="countryMessage" class="countryMessage"></p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="addCountryBtn"
+                >
+                  Guardar País
                 </button>
               </div>
             </div>
