@@ -7,6 +7,7 @@ const {
   createCountry,
   deleteCountry,
   updateCountry,
+  getCountries,
 } = require("./countryController");
 
 router.post("/create", (req, res) => {
@@ -20,34 +21,34 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/list", (req, res) => {
-  regionModel
-    .findAll()
-    .then((regions) => {
-      res.status(200).json(regions);
+router.get("/:regionId/countryList", (req, res) => {
+  let { regionId } = req.params;
+  getCountries(regionId)
+    .then((countries) => {
+      res.status(200).json(countries);
     })
     .catch((err) => {
       res.status(500).json("Error interno, por favor intente mas tarde");
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
-  let id = req.params.id;
-  deleteRegion(id)
-    .then((response) => {
-      res.status(200).json(response);
+router.get("/:countryId", (req, res) => {
+  let country = req.params;
+  countryModel
+    .findOne({ where: { id: country } })
+    .then((user) => {
+      res.status(200).json(user);
     })
     .catch((error) => {
       res.status(error).json(error);
     });
 });
 
-router.get("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   let id = req.params.id;
-  regionModel
-    .findOne({ where: { id: id } })
-    .then((region) => {
-      res.status(200).json(region);
+  deleteCountry(id)
+    .then((response) => {
+      res.status(200).json(response);
     })
     .catch((error) => {
       res.status(error).json(error);
@@ -57,9 +58,9 @@ router.get("/:id", (req, res) => {
 router.patch("/update/:id", (req, res) => {
   let id = req.params.id;
   let data = req.body;
-  updateRegion(id, data)
-    .then((user) => {
-      res.status(200).json(user);
+  updateCountry(id, data)
+    .then((resp) => {
+      res.status(200).json(resp);
     })
     .catch((error) => {
       res.status(error).json(error);

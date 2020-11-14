@@ -2,7 +2,7 @@ const countryModel = require("../../models/countryModel");
 
 const createCountry = (data) => {
   return new Promise(async (res, rejc) => {
-    if (!data.name || data.regionId) {
+    if (!data.name || !data.regionId) {
       rejc({ status: 406, message: "Por favor llene todos los campos" });
     } else {
       let name = await countryModel.findOne({ where: { name: data.name } });
@@ -23,6 +23,23 @@ const createCountry = (data) => {
         rejc({ status: 400, message: "Ya existe una región con este nombre" });
       }
     }
+  });
+};
+
+const getCountries = (regionId) => {
+  return new Promise((res, rejc) => {
+    countryModel
+      .findAll({ where: { regionId: regionId } })
+      .then((response) => {
+        res(response);
+      })
+      .catch((error) => {
+        rejc({
+          status: 500,
+          message:
+            "Tenemos problemas en el servidor, por favor intente mas tarde",
+        });
+      });
   });
 };
 
@@ -81,6 +98,7 @@ const updateCountry = (id, data) => {
 
 module.exports = {
   createCountry,
+  getCountries,
   deleteCountry,
   updateCountry,
 };

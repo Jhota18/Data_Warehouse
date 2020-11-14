@@ -9,6 +9,7 @@ let addRegionBtn = document.getElementById("addRegionBtn");
 let countryName = document.getElementById("countryName");
 let countryMessage = document.getElementById("countryMessage");
 let addCountryBtn = document.getElementById("addCountryBtn");
+let modalCountryConfirm = document.getElementById("confirmDeleteCountry");
 
 //OPEN MODALS
 let open = () => {
@@ -49,7 +50,7 @@ let renderRegions = () => {
         <div class="row">
             <div class="col">
                 <div class="collapse multi-collapse" id="regionCollapse${id}">
-                    <div class="card card-bodyCo${id}">
+                    <div class="card card-bodyCo" id="countryCard${id}">
                         
                     </div>
                 </div>
@@ -57,6 +58,7 @@ let renderRegions = () => {
         </div>
     </section>`;
         regionContainer.insertAdjacentHTML("beforeend", region);
+        renderCountries(id);
       });
     });
   });
@@ -181,22 +183,23 @@ let updateRegion = (id, data) => {
 //ADD COUNTRY
 let getCountryData = (regionId) => {
   openCountry();
-  let countryData = countryName.value;
-  console.log(countryData);
 
-  if (countryData === "") {
-    countryMessage.innerHTML =
-      "*Por favor ingrese el nombre del país a agregar";
-  } else {
-    let dataObject = {
-      name: countryData,
-      regionId: regionId,
-    };
-    let data = JSON.stringify(dataObject);
-    addCountryBtn.addEventListener("click", () => {
+  addCountryBtn.addEventListener("click", () => {
+    let countryData = countryName.value;
+
+    if (countryData === "") {
+      countryMessage.innerHTML =
+        "*Por favor ingrese el nombre del país a agregar";
+    } else {
+      let dataObject = {
+        name: countryData,
+        regionId: regionId,
+      };
+      let data = JSON.stringify(dataObject);
+      console.log(data);
       addCountry(data);
-    });
-  }
+    }
+  });
 };
 
 let addCountry = (data) => {
@@ -215,27 +218,110 @@ let addCountry = (data) => {
       res.json().then((info) => {
         console.log(info);
         const { id, name, regionId } = info;
-        let regionCard = document.getElementById(`countryCard${regionId}`);
-        let countryCard = `<div class="countryContainer" id="countryCard${regionId}">
+        let regionCard = document.querySelector(`#countryCard${regionId}`);
+        console.log(regionCard);
+        let countryCard = `<div class="countryContainer" id="countryC${id}">
         <h2 class="coTitle">
           <a
             class="regionTree"
             data-toggle="collapse"
-            href="#cityCollapse${regionId}"
+            href="#cityCollapse${id}"
             role="button"
             aria-expanded="false"
             aria-controls="multiCollapseExample1"
-            >${name}</a
-          >
+          >${name}</a>
         </h2>
-        <i class="fas fa-edit"></i>
-        <i class="far fa-trash-alt"></i>
+        <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
+        <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
         <i class="fas fa-plus"></i>
       </div>`;
         regionCard.insertAdjacentHTML("beforeend", countryCard);
-        close();
-        clear();
+        closeCountry();
+        // clear();
       });
     }
+  });
+};
+
+let renderCountries = (regionId) => {
+  fetch(`http://localhost:3000/country/${regionId}/countryList`).then(
+    (countryCard) => {
+      countryCard.json().then((countryCard) => {
+        countryCard.forEach((country) => {
+          const { id, name, regionId } = country;
+          let regionCard = document.querySelector(`#countryCard${regionId}`);
+          let countryCard = `<div class="countryContainer" id="countryC${id}">
+        <h2 class="coTitle">
+          <a
+            class="regionTree"
+            data-toggle="collapse"
+            href="#cityCollapse${id}"
+            role="button"
+            aria-expanded="false"
+            aria-controls="multiCollapseExample1"
+          >${name}</a>
+        </h2>
+        <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
+        <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
+        <i class="fas fa-plus"></i>
+      </div>`;
+          regionCard.insertAdjacentHTML("beforeend", countryCard);
+        });
+      });
+    }
+  );
+};
+
+//UPDATE COUNTRY
+let getCountryInfo = (id, name) => {
+  fetch(`http://localhost:3000/country/${id}`).then((country) => {
+    country.json().then((countryInfo) => {
+      countryName.value = name;
+      openCountry();
+      addCountryBtn.addEventListener("click", () => {
+        let newData = countryName.value;
+        let dataObject = {
+          name: newData,
+        };
+        let data = JSON.stringify(dataObject);
+        updateCountry(id, data);
+        closeCountry();
+      });
+    });
+  });
+};
+
+let updateCountry = (id, data) => {
+  fetch(`http://localhost:3000/country/update/${id}`, {
+    method: "PATCH",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer " + token,
+    },
+  }).then((updatedCountry) => {
+    updatedCountry.json().then((countryUpd) => {
+      location.reload();
+    });
+  });
+};
+
+//DELETE COUNTRY
+let countryOpenDelete = () => {
+  $("#countryDeleteConfirm").modal("show");
+};
+
+let deleteCountry = (id) => {
+  countryOpenDelete();
+  modalCountryConfirm.addEventListener("click", () => {
+    fetch(`http://localhost:3000/country/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        //   Authorization: "Bearer " + token,
+      },
+    }).then((response) => {
+      location.reload();
+    });
   });
 };
