@@ -11,6 +11,12 @@ let countryMessage = document.getElementById("countryMessage");
 let addCountryBtn = document.getElementById("addCountryBtn");
 let modalCountryConfirm = document.getElementById("confirmDeleteCountry");
 
+//CITY DOM ELEMENTS
+let cityName = document.getElementById("cityName");
+let cityMessage = document.getElementById("cityMessage");
+let addCityBtn = document.getElementById("addCityBtn");
+// let modalCityConfirm = document.getElementById("confirmDeleteCity");
+
 //OPEN MODALS
 let open = () => {
   $("#addRegion").modal("show");
@@ -18,6 +24,10 @@ let open = () => {
 
 let openCountry = () => {
   $("#addCountry").modal("show");
+};
+
+let openCity = () => {
+  $("#addCity").modal("show");
 };
 //CLOSE MODALS
 let close = () => {
@@ -28,6 +38,9 @@ let closeCountry = () => {
   $("#addCountry").modal("hide");
 };
 
+let closeCity = () => {
+  $("#addCity").modal("hide");
+};
 //CLEAR MODAL FIELDS
 let clear = () => {
   regionName.value = "";
@@ -233,7 +246,12 @@ let addCountry = (data) => {
         </h2>
         <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-plus" onclick="getCityData(${id})"></i>
+      </div>
+      <div class="col cityContainer">
+        <div class="collapse multi-collapse" id="cityCollapse${id}">
+
+        </div>
       </div>`;
         regionCard.insertAdjacentHTML("beforeend", countryCard);
         closeCountry();
@@ -263,9 +281,15 @@ let renderCountries = (regionId) => {
         </h2>
         <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-plus" onclick="getCityData(${id})"></i>
+      </div>
+      <div class="col cityContainer">
+        <div class="collapse multi-collapse" id="cityCollapse${id}">
+        
+        </div>
       </div>`;
           regionCard.insertAdjacentHTML("beforeend", countryCard);
+          renderCities(id);
         });
       });
     }
@@ -322,6 +346,78 @@ let deleteCountry = (id) => {
       },
     }).then((response) => {
       location.reload();
+    });
+  });
+};
+
+//ADD CITY
+let getCityData = (countryId) => {
+  openCity();
+
+  addCityBtn.addEventListener("click", () => {
+    let cityData = cityName.value;
+
+    if (cityData === "") {
+      cityMessage.innerHTML =
+        "*Por favor ingrese el nombre de la ciudad a agregar";
+    } else {
+      let dataObject = {
+        name: cityData,
+        countryId: countryId,
+      };
+      let data = JSON.stringify(dataObject);
+      console.log(data);
+      addCity(data);
+    }
+  });
+};
+
+let addCity = (data) => {
+  event.preventDefault;
+  fetch("http://localhost:3000/city/create", {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer " + token,
+    },
+  }).then((res) => {
+    if (res.status === 400) {
+      cityMessage.innerHTML = "*Ya existe una ciudad con este nombre";
+    } else {
+      res.json().then((info) => {
+        console.log(info);
+        const { id, name, countryId } = info;
+        let countryCard = document.querySelector(`#cityCollapse${countryId}`);
+        console.log(countryCard);
+        let cityCard = `
+        <div class="card card-bodyCi" id="cityCard${id}">
+          <h6>${name}</h6>
+          <i class="fas fa-edit"></i>
+          <i class="far fa-trash-alt"></i>
+        </div>`;
+        countryCard.insertAdjacentHTML("beforeend", cityCard);
+        closeCity();
+        // clear();
+      });
+    }
+  });
+};
+
+let renderCities = (countryId) => {
+  fetch(`http://localhost:3000/city/${countryId}/cityList`).then((cityCard) => {
+    cityCard.json().then((cityCard) => {
+      cityCard.forEach((city) => {
+        const { id, name, countryId } = city;
+        let regionCard = document.querySelector(`#cityCollapse${countryId}`);
+        let cityCard = `
+        <div class="card card-bodyCi" id="cityCard${id}">
+          <h6>${name}</h6>
+          <i class="fas fa-edit"></i>
+          <i class="far fa-trash-alt"></i>
+        </div>`;
+        regionCard.insertAdjacentHTML("beforeend", cityCard);
+      });
     });
   });
 };
