@@ -4,18 +4,21 @@ let regionName = document.getElementById("regionName");
 let regionMessage = document.getElementById("regionMessage");
 let modalConfirm = document.getElementById("confirmDelete");
 let addRegionBtn = document.getElementById("addRegionBtn");
+let ModalLabelRegion = document.getElementById("ModalLabelRegion");
 
 //COUNTRY DOM ELEMENTS
 let countryName = document.getElementById("countryName");
 let countryMessage = document.getElementById("countryMessage");
 let addCountryBtn = document.getElementById("addCountryBtn");
 let modalCountryConfirm = document.getElementById("confirmDeleteCountry");
+let ModalLabelCountry = document.getElementById("ModalLabelCountry");
 
 //CITY DOM ELEMENTS
 let cityName = document.getElementById("cityName");
 let cityMessage = document.getElementById("cityMessage");
 let addCityBtn = document.getElementById("addCityBtn");
-// let modalCityConfirm = document.getElementById("confirmDeleteCity");
+let ModalLabelCity = document.getElementById("ModalLabelCity");
+let modalCityConfirm = document.getElementById("confirmDeleteCity");
 
 //OPEN MODALS
 let open = () => {
@@ -53,10 +56,10 @@ let renderRegions = () => {
       regionCard.forEach((regionC) => {
         const { id, name } = regionC;
         let region = `<section class="region" id=regionId${id}>
-        <h1 class="regionTittle">
-            <a class="regionTree" data-toggle="collapse" href="#regionCollapse${id}" role="button" aria-expanded="false"
-                aria-controls="multiCollapseExample1">${name}</a>
-        </h1>
+        <h2 class="regionTittle">
+            <b><a class="regionTree" data-toggle="collapse" href="#regionCollapse${id}" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1">${name}</a></b>
+        </h2>
         <i class="fas fa-edit" onclick="getRegionInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteRegion(${id})"></i>
         <i class="fas fa-plus" onclick="getCountryData(${id})"></i>
@@ -112,10 +115,10 @@ let addRegion = (data) => {
         console.log(info);
         const { id, name } = info;
         let regionCard = `<section class="region" id=regionId${id}>
-        <h1 class="regionTittle">
-            <a class="regionTree" data-toggle="collapse" href="#regionCollapse${id}" role="button" aria-expanded="false"
-                aria-controls="multiCollapseExample1">${name}</a>
-        </h1>
+        <h2 class="regionTittle">
+          <b><a class="regionTree" data-toggle="collapse" href="#regionCollapse${id}" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1">${name}</a></b>
+        </h2>
         <i class="fas fa-edit" onclick="getRegionInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteRegion(${id})"></i>
         <i class="fas fa-plus" onclick="getCountryData(${id})"></i>
@@ -163,6 +166,7 @@ let getRegionInfo = (id, name) => {
     region.json().then((regionInfo) => {
       regionName.value = name;
       open();
+      ModalLabelRegion.innerHTML = "Editar Región";
       addRegionBtn.onclick = "";
       addRegionBtn.addEventListener("click", () => {
         let newData = regionName.value;
@@ -234,7 +238,7 @@ let addCountry = (data) => {
         let regionCard = document.querySelector(`#countryCard${regionId}`);
         console.log(regionCard);
         let countryCard = `<div class="countryContainer" id="countryC${id}">
-        <h2 class="coTitle">
+        <h4 class="coTitle">
           <a
             class="regionTree"
             data-toggle="collapse"
@@ -243,7 +247,7 @@ let addCountry = (data) => {
             aria-expanded="false"
             aria-controls="multiCollapseExample1"
           >${name}</a>
-        </h2>
+        </h4>
         <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
         <i class="fas fa-plus" onclick="getCityData(${id})"></i>
@@ -269,7 +273,7 @@ let renderCountries = (regionId) => {
           const { id, name, regionId } = country;
           let regionCard = document.querySelector(`#countryCard${regionId}`);
           let countryCard = `<div class="countryContainer" id="countryC${id}">
-        <h2 class="coTitle">
+        <h4 class="coTitle">
           <a
             class="regionTree"
             data-toggle="collapse"
@@ -278,7 +282,7 @@ let renderCountries = (regionId) => {
             aria-expanded="false"
             aria-controls="multiCollapseExample1"
           >${name}</a>
-        </h2>
+        </h4>
         <i class="fas fa-edit" onclick="getCountryInfo(${id}, '${name}')"></i>
         <i class="far fa-trash-alt" onclick="deleteCountry(${id})"></i>
         <i class="fas fa-plus" onclick="getCityData(${id})"></i>
@@ -302,6 +306,7 @@ let getCountryInfo = (id, name) => {
     country.json().then((countryInfo) => {
       countryName.value = name;
       openCountry();
+      ModalLabelCountry.innerHTML = "Editar país";
       addCountryBtn.addEventListener("click", () => {
         let newData = countryName.value;
         let dataObject = {
@@ -393,8 +398,8 @@ let addCity = (data) => {
         let cityCard = `
         <div class="card card-bodyCi" id="cityCard${id}">
           <h6>${name}</h6>
-          <i class="fas fa-edit"></i>
-          <i class="far fa-trash-alt"></i>
+          <i class="fas fa-edit" onclick="getCityInfo(${id}, '${name}')"></i>
+          <i class="far fa-trash-alt" onclick="deleteCity(${id})"></i>
         </div>`;
         countryCard.insertAdjacentHTML("beforeend", cityCard);
         closeCity();
@@ -413,11 +418,66 @@ let renderCities = (countryId) => {
         let cityCard = `
         <div class="card card-bodyCi" id="cityCard${id}">
           <h6>${name}</h6>
-          <i class="fas fa-edit"></i>
-          <i class="far fa-trash-alt"></i>
+          <i class="fas fa-edit" onclick="getCityInfo(${id}, '${name}')"></i>
+          <i class="far fa-trash-alt" onclick="deleteCity(${id})"></i>
         </div>`;
         regionCard.insertAdjacentHTML("beforeend", cityCard);
       });
+    });
+  });
+};
+
+//UPDATE CITY
+let getCityInfo = (id, name) => {
+  fetch(`http://localhost:3000/city/${id}`).then((city) => {
+    city.json().then((cityInfo) => {
+      cityName.value = name;
+      openCity();
+      ModalLabelCity.innerHTML = "Editar ciudad";
+      addCityBtn.addEventListener("click", () => {
+        let newData = cityName.value;
+        let dataObject = {
+          name: newData,
+        };
+        let data = JSON.stringify(dataObject);
+        updateCity(id, data);
+        closeCountry();
+      });
+    });
+  });
+};
+
+let updateCity = (id, data) => {
+  fetch(`http://localhost:3000/city/update/${id}`, {
+    method: "PATCH",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer " + token,
+    },
+  }).then((updatedCity) => {
+    updatedCity.json().then((updatedCity) => {
+      location.reload();
+    });
+  });
+};
+
+//DELETE CITY
+let cityOpenDelete = () => {
+  $("#cityDeleteConfirm").modal("show");
+};
+
+let deleteCity = (id) => {
+  cityOpenDelete();
+  modalCityConfirm.addEventListener("click", () => {
+    fetch(`http://localhost:3000/city/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        //   Authorization: "Bearer " + token,
+      },
+    }).then((response) => {
+      location.reload();
     });
   });
 };

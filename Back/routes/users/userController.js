@@ -77,7 +77,7 @@ const deleteUser = (email) => {
           });
         }
       })
-      .then((error) => {
+      .catch((error) => {
         rejc({
           status: 500,
           message: "Poseemos problemas, por favor intenta mas tarde",

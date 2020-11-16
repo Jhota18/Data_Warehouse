@@ -8,6 +8,8 @@ const {
   deleteCountry,
   updateCountry,
   getCountries,
+  getAllCountries,
+  getCountryById,
 } = require("./countryController");
 
 router.post("/create", (req, res) => {
@@ -32,15 +34,24 @@ router.get("/:regionId/countryList", (req, res) => {
     });
 });
 
-router.get("/:countryId", (req, res) => {
-  let country = req.params;
-  countryModel
-    .findOne({ where: { id: country } })
-    .then((user) => {
-      res.status(200).json(user);
+router.get("/list", (req, res) => {
+  getAllCountries()
+    .then((response) => {
+      res.status(200).json(response);
     })
     .catch((error) => {
-      res.status(error).json(error);
+      res.status(error.status).json({ message: error.message });
+    });
+});
+
+router.get("/:countryId", (req, res) => {
+  let country = req.params.countryId;
+  getCountryById(country)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((error) => {
+      res.status(error.status).json({ message: error.message });
     });
 });
 

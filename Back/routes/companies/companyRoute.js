@@ -1,54 +1,56 @@
 const express = require("express");
+const companyModel = require("../../models/companyModel");
 const countryModel = require("../../models/countryModel");
 const router = express.Router();
 const authentication = require("../../middlewares/authentication");
 const authorization = require("../../middlewares/authorization");
+
 const {
-  createCity,
-  deleteCity,
-  updateCity,
-  getCities,
-} = require("./cityController");
+  createCompany,
+  deleteCompany,
+  updateCompany,
+} = require("./companyController");
+const { response } = require("express");
 
 router.post("/create", (req, res) => {
-  const reqCity = req.body;
-  createCity(reqCity)
-    .then((city) => {
-      res.status(200).json(city);
+  const reqCompany = req.body;
+  createCompany(reqCompany)
+    .then((company) => {
+      res.status(200).json(company);
     })
     .catch((error) => {
       res.status(error.status).json(error.message);
     });
 });
 
-router.get("/:countryId/cityList", (req, res) => {
-  let { countryId } = req.params;
-  getCities(countryId)
-    .then((cities) => {
-      res.status(200).json(cities);
+router.get("/list", (req, res) => {
+  companyModel
+    .findAll()
+    .then((companies) => {
+      res.status(200).json(companies);
     })
     .catch((err) => {
       res.status(500).json("Error interno, por favor intente mas tarde");
     });
 });
 
-router.get("/:cityId", (req, res) => {
-  let city = req.params;
-  countryModel
-    .findOne({ where: { id: city } })
-    .then((city) => {
-      res.status(200).json(city);
+router.delete("/delete", (req, res) => {
+  let id = req.body.id;
+  deleteCompany(id)
+    .then((response) => {
+      res.status(200).json(response);
     })
     .catch((error) => {
       res.status(error).json(error);
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   let id = req.params.id;
-  deleteCity(id)
-    .then((response) => {
-      res.status(200).json(response);
+  companyModel
+    .findOne({ where: { id: id } })
+    .then((company) => {
+      res.status(200).json(company);
     })
     .catch((error) => {
       res.status(error).json(error);
@@ -58,9 +60,9 @@ router.delete("/delete/:id", (req, res) => {
 router.patch("/update/:id", (req, res) => {
   let id = req.params.id;
   let data = req.body;
-  updateCity(id, data)
-    .then((resp) => {
-      res.status(200).json(resp);
+  updateCompany(id, data)
+    .then((company) => {
+      res.status(200).json(company);
     })
     .catch((error) => {
       res.status(error).json(error);

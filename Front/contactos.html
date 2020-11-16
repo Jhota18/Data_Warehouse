@@ -79,7 +79,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <img
+                <!-- <img
                   src="img/business-icon-png-1934.png"
                   alt="photo"
                   class="profilePhoto"
@@ -87,15 +87,15 @@
                 <label for="contactPhoto" class="labelPhoto"
                   ><i class="fas fa-camera"></i
                 ></label>
-                <input type="file" id="contactPhoto" class="contactPhoto" />
-                <form>
+                <input type="file" id="contactPhoto" class="contactPhoto" /> -->
+                <form id="contactForm">
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="inputName">Nombres</label>
+                      <label for="inputName"><b>Nombres</b></label>
                       <input type="text" class="form-control" id="inputName" />
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputLastName">Apellidos</label>
+                      <label for="inputLastName"><b>Apellidos</b></label>
                       <input
                         type="text"
                         class="form-control"
@@ -103,19 +103,20 @@
                       />
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputRole">Cargo</label>
+                      <label for="inputRole"><b>Cargo</b></label>
                       <input type="text" class="form-control" id="inputRole" />
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputEmail">Email</label>
+                      <label for="inputEmail"><b>Email</b></label>
                       <input
                         type="email"
                         class="form-control"
                         id="inputEmail"
                       />
+                      <p class="emailExist" id="emailExist"></p>
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputCompany">Compañia</label>
+                      <label for="inputCompany"><b>Compañia</b></label>
                       <input
                         type="text"
                         class="form-control"
@@ -123,61 +124,73 @@
                       />
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputRegion">Region</label>
-                      <select id="inputRegion" class="form-control">
+                      <label for="inputRegion"><b>Region</b></label>
+                      <select
+                        id="inputRegion"
+                        class="form-control"
+                        onchange="showCountries()"
+                      >
                         <option selected>Choose...</option>
-                        <option>...</option>
                       </select>
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputCountry">País</label>
-                      <select id="inputCountry" class="form-control">
+                      <label for="inputCountry"><b>País</b></label>
+                      <select
+                        id="inputCountry"
+                        class="form-control"
+                        onchange="showCities()"
+                      >
                         <option selected>Choose...</option>
-                        <option>...</option>
                       </select>
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="inputCity">Ciudad</label>
+                      <label for="inputCity"><b>Ciudad</b></label>
                       <select id="inputCity" class="form-control">
                         <option selected>Choose...</option>
                         <option>...</option>
                       </select>
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputAddress">Dirección</label>
+                      <label for="inputAddress"><b>Dirección</b></label>
                       <input
                         type="text"
                         class="form-control"
                         id="inputAddress"
                       />
                     </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputInterest">Interés</label>
-                      <input
+                    <div class="form-group col-md-6 rangeCont">
+                      <label for="inputRangeN"><b>Interés</b></label>
+                      <!-- <input
                         type="range"
                         class="form-control-range"
                         id="inputInterest"
-                      />
+                      /> -->
+                      <select id="inputRangeN" class="form-group inputRangeN">
+                        <option selected>0%</option>
+                        <option>25%</option>
+                        <option>50%</option>
+                        <option>75%</option>
+                        <option>100%</option>
+                      </select>
                     </div>
-                    <select
-                      id="inputRangeN"
-                      class="form-group col-md-2 inputRangeN"
-                    >
-                      <option selected>0%</option>
-                      <option>...</option>
-                    </select>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button
+                <!-- <button
                   type="button"
                   class="btn btn-secondary"
                   data-dismiss="modal"
                 >
                   Limpiar
-                </button>
-                <button type="button" class="btn btn-primary">
+                </button> -->
+                <p id="lackFields" class="lackFields"></p>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="saveContact"
+                  onclick="getContactData()"
+                >
                   Guardar contacto
                 </button>
               </div>
@@ -228,11 +241,6 @@
         <div id="contactsContainer">
           <div class="contact">
             <input type="checkbox" class="selectCont" />
-            <img
-              src="img/kisspng-computer-icons-united-states-of-america-user-avata-facial-hair-man-avatar-profile-people-user-b-5bfccdf4d0c0f6.5923136715432944528551.jpg"
-              alt=""
-              class="photo"
-            />
             <h3 class="name">Juan Arisitzabal</h3>
             <p class="email">juan@correo.com</p>
             <h3 class="country">Dinamarca</h3>
@@ -243,8 +251,8 @@
               <div
                 class="progress-bar bg-danger"
                 role="progressbar"
-                style="width: 25%"
-                aria-valuenow="25"
+                style="width: 50%"
+                aria-valuenow="50"
                 aria-valuemin="0"
                 aria-valuemax="100"
               ></div>
@@ -254,11 +262,11 @@
           </div>
           <div class="contact">
             <input type="checkbox" class="selectCont" />
-            <img
+            <!-- <img
               src="img/kisspng-computer-icons-united-states-of-america-user-avata-facial-hair-man-avatar-profile-people-user-b-5bfccdf4d0c0f6.5923136715432944528551.jpg"
               alt=""
               class="photo"
-            />
+            /> -->
             <h3 class="name">Alejandro Gomez</h3>
             <p class="email">alejandro@correo.com</p>
             <h3 class="country">Colombia</h3>
@@ -281,7 +289,6 @@
         </div>
       </section>
     </main>
-    <script src="script/sortContacts.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -292,5 +299,7 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="script/contacts/sortContacts.js"></script>
+    <script src="script/contacts/contacts.js"></script>
   </body>
 </html>

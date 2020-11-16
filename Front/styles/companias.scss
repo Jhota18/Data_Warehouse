@@ -1,219 +1,217 @@
 header {
-    img{
-        float: left;
-        border-radius: 60%;
-        margin-top: 10px;
-        margin-left: 5px;
-    }
+  img {
+    float: left;
+    border-radius: 60%;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
 }
 .logo {
-    position: relative;
-    height: 45px;
-    width: 45px;
+  position: relative;
+  height: 45px;
+  width: 45px;
 }
 
 nav {
-    background-image: url(../img/bg-header-desktop.svg);
-    height: 80px;
-    background-color: hsl(180, 29%, 50%);
-    a{
-        color: white;
-        &:hover{
-            color: white;
-        }
+  background-image: url(../img/bg-header-desktop.svg);
+  height: 80px;
+  background-color: hsl(180, 29%, 50%);
+  a {
+    color: white;
+    &:hover {
+      color: white;
     }
+  }
 
-    .nav-link {
-        margin-top: 22px;
-    }
+  .nav-link {
+    margin-top: 22px;
+  }
 }
 
 .nav-link {
-    &:hover{
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .fa-search {
-    margin-left: 3px;
-    border: solid 1.5px;
-    padding: 5px;
-    border-radius: 5px;
-    height: 29px;
-    &:hover{
-        background-color:  hsl(180, 29%, 50%);
-    }
-    
+  margin-left: 3px;
+  border: solid 1.5px;
+  padding: 5px;
+  border-radius: 5px;
+  height: 29px;
+  &:hover {
+    background-color: hsl(180, 29%, 50%);
+  }
 }
-main{
-    margin-left: 15px;
+main {
+  margin-left: 15px;
 
-    .firstSect{
-        .searchCompanyInput{
-            width: 490px;
-        }
-        .modal-content{
-            border-radius: 5px;
-            width: 720px;
-            .modal-header{
-                background-color: hsl(180, 29%, 50%);
-                
-    
-                .modal-title {
-                    color: white;
-                }
-            }
-    
-        }
-        
-        button{
-            float: right;
-            background-color: hsl(180, 29%, 50%);
-            border-color: hsl(180, 29%, 50%);
-            margin-right: 40px;
-            &:hover {
-                background-color: hsl(180, 39%, 58%);
-                border-color: hsl(180, 39%, 58%);
-            }
-        }
-    
+  .firstSect {
+    .searchCompanyInput {
+      width: 490px;
     }
-    
-    .companyTitles{
-        display: grid;
-        margin-top: 40px;
-        grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 2.5% 2.5%;
-    
-        .selectComp{
-            grid-column: 1/2;
-            margin-left: 34px;
-            margin-right: 10px;
-            align-self: center;
-        }
-    
-        .compName{
-            font-size: larger;
-            grid-column: 2/3;
-        }
-        .compCountry {
-            font-size: larger;
-            grid-column: 3/4;
-            
-        }
-        .compCity {
-            font-size: larger;
-            grid-column: 4/5;
-            
-        }
-        .compAddress {
-            font-size: larger;
-            grid-column: 5/6;
-            
-        }
+    .modal-content {
+      border-radius: 5px;
+      width: 720px;
+      .modal-header {
+        background-color: hsl(180, 29%, 50%);
 
-        .compEmail {
-            font-size: larger;
-            grid-column: 6/7;
-            
+        .modal-title {
+          color: white;
         }
-        
-        .compPhone {
-            font-size: larger;
-            grid-column: 7/8;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: space-between;
+        .lackFields {
+          color: red;
+          font-size: small;
         }
+      }
     }
 
-    .company{
-        display: grid;
-        border: transparent 1px;
-        margin-top: 10px;
-        line-height: 0px;
-        grid-template-rows: 100%;
-        grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 2.5% 2.5%;
-        border-left: solid hsl(180, 29%, 50%) 5px;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0px 5px 20px -10px hsl(180, 8%, 52%);
-        &:hover {
-            background-color: rgba(201, 196, 196, 0.836);
-        }
+    button {
+      float: right;
+      background-color: hsl(180, 29%, 50%);
+      border-color: hsl(180, 29%, 50%);
+      margin-right: 40px;
+      &:hover {
+        background-color: hsl(180, 39%, 58%);
+        border-color: hsl(180, 39%, 58%);
+      }
+    }
+  }
 
-        .selectComp{
-            align-self: center;
-            grid-column: 1/2;
-            grid-row: 1/2;
-            margin-left: 28px;
-        }
+  .companyTitles {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 2.5% 2.5%;
 
-        .companyN {
-            grid-column: 2/3;
-            grid-row: 1/2;
-            margin-right: 20px;
-            font-size: large;
-            margin-top: auto;
-        }
-
-        .companyCo {
-            grid-column: 3/4;
-            grid-row: 1/2;
-            margin-right: 20px;
-            font-size: large;
-            margin-top: auto;
-        }
-
-        .companyCi {
-            grid-column: 4/5;
-            grid-row: 1/2;
-            margin-right: 20px;
-            font-size: large;
-            margin-top: auto;
-        }
-        .companyA {
-            grid-column: 5/6;
-            grid-row: 1/2;
-            font-size: large;
-            margin-top: auto;
-        }
-        .companyE {
-            grid-column: 6/7;
-            grid-row: 1/2;
-            font-size: large;
-            margin-top: auto;
-        }
-        .companyP {
-            grid-column: 7/8;
-            grid-row: 1/2;
-            font-size: large;
-            margin-top: auto;
-        }
-
-        .fa-edit {
-            border-radius: 5px;
-            grid-column: 8/9;
-            grid-row: 1/2;
-            width: 15px;
-            height: 15px;
-            align-self: center;
-            &:hover {
-                background-color: hsl(180, 29%, 50%);
-                border-color: hsl(180, 29%, 50%);
-            }
-        }
-
-        .fa-trash-alt {
-            border-radius: 5px;
-            grid-column: 9/10;
-            grid-row: 1/2;
-            width: 16px;
-            height: 16px;
-            align-self: center;
-            &:hover {
-                background-color: hsl(0, 46%, 56%);
-                border-color: hsl(180, 29%, 50%);
-            }
-        }
-        
-        
+    .selectComp {
+      grid-column: 1/2;
+      margin-left: 34px;
+      margin-right: 10px;
+      align-self: center;
     }
 
+    .compName {
+      font-size: larger;
+      grid-column: 2/3;
+    }
+    .compCountry {
+      font-size: larger;
+      grid-column: 3/4;
+    }
+    .compCity {
+      font-size: larger;
+      grid-column: 4/5;
+    }
+    .compAddress {
+      font-size: larger;
+      grid-column: 5/6;
+    }
+
+    .compEmail {
+      font-size: larger;
+      grid-column: 6/7;
+    }
+
+    .compPhone {
+      font-size: larger;
+      grid-column: 7/8;
+    }
+  }
+
+  .company {
+    display: grid;
+    border: transparent 1px;
+    margin-top: 10px;
+    line-height: 0px;
+    grid-template-rows: 100%;
+    grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 2.5% 2.5%;
+    border-left: solid hsl(180, 29%, 50%) 5px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 20px -10px hsl(180, 8%, 52%);
+    &:hover {
+      background-color: rgba(201, 196, 196, 0.836);
+    }
+
+    .selectComp {
+      align-self: center;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      margin-left: 28px;
+    }
+
+    .companyN {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      margin-right: 20px;
+      font-size: large;
+      margin-top: auto;
+    }
+
+    .companyCo {
+      grid-column: 3/4;
+      grid-row: 1/2;
+      margin-right: 20px;
+      font-size: large;
+      margin-top: auto;
+    }
+
+    .companyCi {
+      grid-column: 4/5;
+      grid-row: 1/2;
+      margin-right: 20px;
+      font-size: large;
+      margin-top: auto;
+    }
+    .companyA {
+      grid-column: 5/6;
+      grid-row: 1/2;
+      font-size: large;
+      margin-top: auto;
+    }
+    .companyE {
+      grid-column: 6/7;
+      grid-row: 1/2;
+      font-size: large;
+      margin-top: auto;
+    }
+    .companyP {
+      grid-column: 7/8;
+      grid-row: 1/2;
+      font-size: large;
+      margin-top: auto;
+    }
+
+    .fa-edit {
+      border-radius: 5px;
+      grid-column: 8/9;
+      grid-row: 1/2;
+      width: 15px;
+      height: 15px;
+      align-self: center;
+      &:hover {
+        background-color: hsl(180, 29%, 50%);
+        border-color: hsl(180, 29%, 50%);
+      }
+    }
+
+    .fa-trash-alt {
+      border-radius: 5px;
+      grid-column: 9/10;
+      grid-row: 1/2;
+      width: 16px;
+      height: 16px;
+      align-self: center;
+      &:hover {
+        background-color: hsl(0, 46%, 56%);
+        border-color: hsl(180, 29%, 50%);
+      }
+    }
+  }
 }

@@ -49,11 +49,11 @@ const deleteCity = (id) => {
       .destroy({ where: { id: id } })
       .then((response) => {
         if (response === 1) {
-          res("País eliminado");
+          res("Ciudad eliminada");
         } else {
           rejc({
             status: 404,
-            message: "País no encontrado, por favor verifique",
+            message: "Ciudad no encontrada, por favor verifique",
           });
         }
       })
@@ -73,11 +73,11 @@ const updateCity = (id, data) => {
         .update(data, { where: { id: id } })
         .then((response) => {
           if (response[0] === 1) {
-            res("País actualizado con exito");
+            res("Ciudad actualizada con exito");
           } else {
             rejc({
               status: 404,
-              message: "Datos no encontrados, no se pudo actualizar el país.",
+              message: "Datos no encontrados, no se pudo actualizar la ciudad.",
             });
           }
         })
@@ -90,7 +90,7 @@ const updateCity = (id, data) => {
     } else {
       rejc({
         status: 406,
-        message: "Por favor indique país a eliminar",
+        message: "Por favor indique ciudad a eliminar",
       });
     }
   });

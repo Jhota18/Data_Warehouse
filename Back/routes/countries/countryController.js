@@ -43,6 +43,55 @@ const getCountries = (regionId) => {
   });
 };
 
+// const getAllCountries = () => {
+//   return new Promise((res, rejc) => {
+//     countryModel
+//       .findAll()
+//       .then((response) => {
+//         res(response).json(response);
+//       })
+//       .catch((error) => {
+//         rejc({
+//           status: 500,
+//           message:
+//             "Tenemos problemas en el servidor, por favor intente mas tarde",
+//         });
+//       });
+//   });
+// };
+
+const getAllCountries = () => {
+  return new Promise((res, rejc) => {
+    countryModel
+      .findAll()
+      .then((response) => {
+        res(response);
+      })
+      .catch((error) => {
+        rejc({
+          status: 500,
+          message: "UPS!! tenemos problemas intenta de nuevo mas tarde",
+        });
+      });
+  });
+};
+
+const getCountryById = (id) => {
+  return new Promise((res, rejc) => {
+    countryModel
+      .findByPk(id)
+      .then((response) => {
+        res(response);
+      })
+      .catch((error) => {
+        rejc({
+          status: 500,
+          message: "UPS!! tenemos problemas intenta de nuevo mas tarde",
+        });
+      });
+  });
+};
+
 const deleteCountry = (id) => {
   return new Promise((res, rejc) => {
     countryModel
@@ -99,6 +148,8 @@ const updateCountry = (id, data) => {
 module.exports = {
   createCountry,
   getCountries,
+  getAllCountries,
+  getCountryById,
   deleteCountry,
   updateCountry,
 };

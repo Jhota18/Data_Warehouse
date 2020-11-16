@@ -66,6 +66,20 @@ main .firstSect .modal-content .modal-header .modal-title {
   color: white;
 }
 
+main .firstSect .modal-content .modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .firstSect .modal-content .modal-footer .lackFields {
+  color: red;
+  font-size: small;
+}
+
 main .firstSect button {
   float: right;
   background-color: #5ba4a4;

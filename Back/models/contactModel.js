@@ -1,60 +1,53 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../DB');
-
+const { DataTypes } = require("sequelize");
+const sequelize = require("../DB");
 
 const contactModel = sequelize.define(
-  'contacts',
+  "contacts",
   {
-    img: {
-      type: DataTypes.STRING(50),
-			allowNull: false,
-    },
     name: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     lastname: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     role: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     company: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     region: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     country: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     city: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     address: {
       type: DataTypes.STRING(50),
-			allowNull: false,
+      allowNull: false,
     },
     interest: {
       type: DataTypes.INTEGER,
-			allowNull: false,
-    }
+      allowNull: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
-
-
 
 module.exports = contactModel;

@@ -5,7 +5,7 @@ let emailExist = document.querySelector(".emailExist");
 let saveUser = document.querySelector("#saveUser");
 let usersList = document.querySelector("#usersContainer");
 let modalYes = document.getElementById("confirmDelete");
-let updateBtn = document.querySelector(".modal-footer");
+// let updateBtn = document.querySelector(".modal-footer");
 
 //RENDER USERS
 let renderUsers = () => {
@@ -195,6 +195,7 @@ let updateUser = (id, data) => {
     },
   }).then((updatedUser) => {
     updatedUser.json().then((userUpd) => {
+      location.reload();
       console.log(userUpd);
     });
   });

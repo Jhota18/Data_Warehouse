@@ -25,20 +25,24 @@ cityModel.sync();
 userModel.sync();
 
 //ROUTES REQUIRE
+const contactRoute = require("./routes/contacts/contactRoute");
 const userRoute = require("./routes/users/userRoute");
 const regionRoute = require("./routes/regions/regionRoute");
 const countryRoute = require("./routes/countries/countryRoute");
 const cityRoute = require("./routes/cities/cityRoute");
+const companyRoute = require("./routes/companies/companyRoute");
 
 //ALLOW CORS
 app.use(cors());
 app.options("*", cors());
 
 //Routes
+app.use("/contact", contactRoute);
 app.use("/users", userRoute);
 app.use("/region", regionRoute);
 app.use("/country", countryRoute);
 app.use("/city", cityRoute);
+app.use("/company", companyRoute);
 
 //SERVER PORT
 app.listen(3000, () => {

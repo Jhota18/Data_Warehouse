@@ -98,9 +98,22 @@ main .firstSect .modal-content .modal-body .contactPhoto {
   display: none;
 }
 
-main .firstSect .modal-content .modal-body .inputRangeN {
+main .firstSect .modal-content .modal-body .rangeCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+main .firstSect .modal-content .modal-body .rangeCont label {
+  margin-top: 27px;
+}
+
+main .firstSect .modal-content .modal-body .rangeCont .inputRangeN {
   margin-top: 28px;
-  max-width: 62px;
+  max-width: 80px;
 }
 
 main .firstSect button {
@@ -118,8 +131,8 @@ main .titles {
   display: -ms-grid;
   display: grid;
   margin-top: 30px;
-  -ms-grid-columns: 5% 5% 15%  15% 15% 18% 15% 12%;
-      grid-template-columns: 5% 5% 15%  15% 15% 18% 15% 12%;
+  -ms-grid-columns: 5% 20% 15% 15% 18% 15% 12%;
+      grid-template-columns: 5% 20% 15% 15% 18% 15% 12%;
 }
 
 main .titles .select {
@@ -139,8 +152,8 @@ main .titles .contactTitle {
       -ms-flex-pack: center;
           justify-content: center;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-column: 2/4;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
 }
 
 main .titles .contactTitle h3 {
@@ -168,14 +181,15 @@ main .titles .contactTitle .iconsContainer .fa-sort-down {
 }
 
 main .titles .countryTitle {
-  -ms-grid-column: 4;
-  grid-column: 4/4;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 main .titles .countryTitle h3 {
@@ -198,14 +212,15 @@ main .titles .countryTitle .iconsContainer .fa-sort-up {
 }
 
 main .titles .companyTitle {
-  -ms-grid-column: 5;
-  grid-column: 5/5;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 main .titles .companyTitle h3 {
@@ -228,14 +243,15 @@ main .titles .companyTitle .iconsContainer .fa-sort-up {
 }
 
 main .titles .roleTitle {
-  -ms-grid-column: 6;
-  grid-column: 6/6;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 1;
+  grid-column: 5/6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 main .titles .roleTitle h3 {
@@ -258,14 +274,15 @@ main .titles .roleTitle .iconsContainer .fa-sort-up {
 }
 
 main .titles .interestTitle {
-  -ms-grid-column: 7;
-  grid-column: 7/7;
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 1;
+  grid-column: 6/7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 main .titles .interestTitle h3 {
@@ -290,8 +307,9 @@ main .titles .interestTitle .iconsContainer .fa-sort-up {
 
 main .titles .actionsTitle {
   font-size: larger;
-  -ms-grid-column: 8;
-  grid-column: 8/8;
+  -ms-grid-column: 7;
+  -ms-grid-column-span: 1;
+  grid-column: 7/8;
   margin-left: 28px;
 }
 
@@ -303,8 +321,8 @@ main .contact {
   line-height: 0px;
   -ms-grid-rows: 35px 25px;
       grid-template-rows: 35px 25px;
-  -ms-grid-columns: 5% 5% 15%  15% 15% 18% 15% 6% 6%;
-      grid-template-columns: 5% 5% 15%  15% 15% 18% 15% 6% 6%;
+  -ms-grid-columns: 5% 20% 15% 15% 18% 15% 6% 6%;
+      grid-template-columns: 5% 20% 15% 15% 18% 15% 6% 6%;
   border-left: solid #5ba4a4 5px;
   background-color: white;
   border-radius: 5px;
@@ -329,19 +347,10 @@ main .contact .selectCont {
   margin-left: 28px;
 }
 
-main .contact .photo {
-  border-radius: 90%;
-  width: 50px;
-  height: 30px;
-  margin-top: 15px;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1/2;
-}
-
 main .contact .name {
-  -ms-grid-column: 3;
-  grid-column: 3/3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
   -ms-grid-row: 1;
   grid-row: 1/1;
   margin-right: 20px;
@@ -350,8 +359,9 @@ main .contact .name {
 }
 
 main .contact .email {
-  -ms-grid-column: 3;
-  grid-column: 3/3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
@@ -361,8 +371,9 @@ main .contact .email {
 }
 
 main .contact .country {
-  -ms-grid-column: 4;
-  grid-column: 4/4;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
   -ms-grid-row: 1;
   grid-row: 1/1;
   font-size: larger;
@@ -370,8 +381,9 @@ main .contact .country {
 }
 
 main .contact .region {
-  -ms-grid-column: 4;
-  grid-column: 4/4;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
   -ms-grid-row: 2;
   grid-row: 2/2;
   margin-top: -2px;
@@ -379,8 +391,9 @@ main .contact .region {
 }
 
 main .contact .company {
-  -ms-grid-column: 5;
-  grid-column: 5/5;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   grid-row: 1/3;
@@ -391,8 +404,9 @@ main .contact .company {
 }
 
 main .contact .role {
-  -ms-grid-column: 6;
-  grid-column: 6/6;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 1;
+  grid-column: 5/6;
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   grid-row: 1/3;
@@ -403,8 +417,9 @@ main .contact .role {
 }
 
 main .contact .progress {
-  -ms-grid-column: 7;
-  grid-column: 7/7;
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 1;
+  grid-column: 6/7;
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   grid-row: 1/3;
@@ -416,8 +431,9 @@ main .contact .progress {
 }
 
 main .contact .fa-edit {
-  -ms-grid-column: 8;
-  grid-column: 8/8;
+  -ms-grid-column: 7;
+  -ms-grid-column-span: 1;
+  grid-column: 7/8;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1/2;
@@ -436,8 +452,9 @@ main .contact .fa-edit:hover {
 }
 
 main .contact .fa-trash-alt {
-  -ms-grid-column: 9;
-  grid-column: 9/9;
+  -ms-grid-column: 8;
+  -ms-grid-column-span: 1;
+  grid-column: 8/9;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1/2;
