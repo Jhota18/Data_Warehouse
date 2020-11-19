@@ -1,3 +1,15 @@
+let data = parseJwt(window.localStorage.getItem("token"));
+let token = JSON.parse(window.localStorage.getItem("token"));
+let users = document.getElementById("usersTab");
+
+if (!data) {
+  window.location = "/login.html";
+} else {
+  if (data.rol !== "Administrador") {
+    users.style.display = "none";
+  }
+}
+
 //REGION DOM ELEMENTS
 let regionContainer = document.getElementById("regionsContainer");
 let regionName = document.getElementById("regionName");
@@ -50,7 +62,13 @@ let clear = () => {
 };
 
 let renderRegions = () => {
-  fetch("http://localhost:3000/region/list").then((regionCard) => {
+  fetch("http://localhost:3000/region/list", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((regionCard) => {
     console.log(regionCard);
     regionCard.json().then((regionCard) => {
       regionCard.forEach((regionC) => {
@@ -105,7 +123,7 @@ let addRegion = (data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((res) => {
     if (res.status === 400) {
@@ -152,7 +170,7 @@ let deleteRegion = (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        //   Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     }).then((response) => {
       location.reload();
@@ -162,7 +180,13 @@ let deleteRegion = (id) => {
 
 //UPDATE REGION
 let getRegionInfo = (id, name) => {
-  fetch(`http://localhost:3000/region/${id}`).then((region) => {
+  fetch(`http://localhost:3000/region/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((region) => {
     region.json().then((regionInfo) => {
       regionName.value = name;
       open();
@@ -187,11 +211,10 @@ let updateRegion = (id, data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((updatedRegion) => {
     updatedRegion.json().then((regionUpd) => {
-      console.log(regionUpd);
       location.reload();
     });
   });
@@ -201,7 +224,7 @@ let updateRegion = (id, data) => {
 let getCountryData = (regionId) => {
   openCountry();
 
-  addCountryBtn.addEventListener("click", () => {
+  addCountryBtn.addEventListener("click", function countryFunct() {
     let countryData = countryName.value;
 
     if (countryData === "") {
@@ -213,8 +236,8 @@ let getCountryData = (regionId) => {
         regionId: regionId,
       };
       let data = JSON.stringify(dataObject);
-      console.log(data);
       addCountry(data);
+      addCountryBtn.removeEventListener("click", countryFunct);
     }
   });
 };
@@ -226,7 +249,7 @@ let addCountry = (data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((res) => {
     if (res.status === 400) {
@@ -266,13 +289,18 @@ let addCountry = (data) => {
 };
 
 let renderCountries = (regionId) => {
-  fetch(`http://localhost:3000/country/${regionId}/countryList`).then(
-    (countryCard) => {
-      countryCard.json().then((countryCard) => {
-        countryCard.forEach((country) => {
-          const { id, name, regionId } = country;
-          let regionCard = document.querySelector(`#countryCard${regionId}`);
-          let countryCard = `<div class="countryContainer" id="countryC${id}">
+  fetch(`http://localhost:3000/country/${regionId}/countryList`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((countryCard) => {
+    countryCard.json().then((countryCard) => {
+      countryCard.forEach((country) => {
+        const { id, name, regionId } = country;
+        let regionCard = document.querySelector(`#countryCard${regionId}`);
+        let countryCard = `<div class="countryContainer" id="countryC${id}">
         <h4 class="coTitle">
           <a
             class="regionTree"
@@ -292,17 +320,22 @@ let renderCountries = (regionId) => {
         
         </div>
       </div>`;
-          regionCard.insertAdjacentHTML("beforeend", countryCard);
-          renderCities(id);
-        });
+        regionCard.insertAdjacentHTML("beforeend", countryCard);
+        renderCities(id);
       });
-    }
-  );
+    });
+  });
 };
 
 //UPDATE COUNTRY
 let getCountryInfo = (id, name) => {
-  fetch(`http://localhost:3000/country/${id}`).then((country) => {
+  fetch(`http://localhost:3000/country/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((country) => {
     country.json().then((countryInfo) => {
       countryName.value = name;
       openCountry();
@@ -326,7 +359,7 @@ let updateCountry = (id, data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((updatedCountry) => {
     updatedCountry.json().then((countryUpd) => {
@@ -347,7 +380,7 @@ let deleteCountry = (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        //   Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     }).then((response) => {
       location.reload();
@@ -359,7 +392,7 @@ let deleteCountry = (id) => {
 let getCityData = (countryId) => {
   openCity();
 
-  addCityBtn.addEventListener("click", () => {
+  addCityBtn.addEventListener("click", function cityFunct() {
     let cityData = cityName.value;
 
     if (cityData === "") {
@@ -373,6 +406,7 @@ let getCityData = (countryId) => {
       let data = JSON.stringify(dataObject);
       console.log(data);
       addCity(data);
+      addCityBtn.removeEventListener("click", cityFunct);
     }
   });
 };
@@ -384,7 +418,7 @@ let addCity = (data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((res) => {
     if (res.status === 400) {
@@ -410,7 +444,13 @@ let addCity = (data) => {
 };
 
 let renderCities = (countryId) => {
-  fetch(`http://localhost:3000/city/${countryId}/cityList`).then((cityCard) => {
+  fetch(`http://localhost:3000/city/${countryId}/cityList`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((cityCard) => {
     cityCard.json().then((cityCard) => {
       cityCard.forEach((city) => {
         const { id, name, countryId } = city;
@@ -429,7 +469,13 @@ let renderCities = (countryId) => {
 
 //UPDATE CITY
 let getCityInfo = (id, name) => {
-  fetch(`http://localhost:3000/city/${id}`).then((city) => {
+  fetch(`http://localhost:3000/city/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((city) => {
     city.json().then((cityInfo) => {
       cityName.value = name;
       openCity();
@@ -453,7 +499,7 @@ let updateCity = (id, data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((updatedCity) => {
     updatedCity.json().then((updatedCity) => {
@@ -474,7 +520,7 @@ let deleteCity = (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        //   Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     }).then((response) => {
       location.reload();

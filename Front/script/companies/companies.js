@@ -1,3 +1,16 @@
+let data = parseJwt(window.localStorage.getItem("token"));
+let token = JSON.parse(window.localStorage.getItem("token"));
+let users = document.getElementById("usersTab");
+
+if (!data) {
+  window.location = "/login.html";
+} else {
+  if (data.rol !== "Administrador") {
+    users.style.display = "none";
+  }
+}
+
+//DOM ELEMENTS
 let form = document.querySelectorAll("#companyForm input,select");
 let lackFields = document.querySelector("#lackFields");
 let emailExist = document.querySelector("#emailExist");
@@ -10,7 +23,13 @@ let companyCity = document.getElementById("companyCity");
 
 //RENDER COMPANIES
 let renderCompanies = () => {
-  fetch("http://localhost:3000/company/list").then((companyCard) => {
+  fetch("http://localhost:3000/company/list", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((companyCard) => {
     companyCard.json().then((companyCard) => {
       companyCard.forEach((companyC) => {
         const { id, name, country, city, address, email, phone } = companyC;
@@ -81,7 +100,7 @@ let addCompany = (data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((res) => {
     if (res.status === 400) {
@@ -139,7 +158,7 @@ let deleteCompany = (id) => {
       body: jsonId,
       headers: {
         "Content-Type": "application/json",
-        //   Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     }).then((company) => {
       location.reload();
@@ -149,7 +168,13 @@ let deleteCompany = (id) => {
 
 //UPDATE USERS
 let getCompanyInfo = (id) => {
-  fetch(`http://localhost:3000/company/${id}`).then((company) => {
+  fetch(`http://localhost:3000/company/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((company) => {
     company.json().then((companyData) => {
       const { id, name, country, city, address, email, phone } = companyData;
       ModalLabel.innerHTML = "Editar compañia";
@@ -198,7 +223,7 @@ let updateCompany = (id, data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((updatedCompany) => {
     updatedCompany.json().then((companyUpd) => {
@@ -208,7 +233,13 @@ let updateCompany = (id, data) => {
 };
 
 let renderCountries = () => {
-  fetch(`http://localhost:3000/country/list`).then((allCountries) => {
+  fetch(`http://localhost:3000/country/list`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((allCountries) => {
     allCountries.json().then((countries) => {
       console.log(countries);
       countries.forEach((country) => {
@@ -240,7 +271,13 @@ let getSelectedOption = (sel) => {
 };
 
 let renderCities = (countryId) => {
-  fetch(`http://localhost:3000/city/${countryId}/cityList`).then((cityCard) => {
+  fetch(`http://localhost:3000/city/${countryId}/cityList`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((cityCard) => {
     cityCard.json().then((cityCard) => {
       cityCard.forEach((city) => {
         const { id, name } = city;

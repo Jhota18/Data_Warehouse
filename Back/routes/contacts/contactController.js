@@ -41,17 +41,17 @@ const createContact = (data) => {
   });
 };
 
-const deleteContact = (id) => {
+const deleteContact = (email) => {
   return new Promise((res, rejc) => {
     contactModel
-      .destroy({ where: { id: id } })
+      .destroy({ where: { email: email } })
       .then((response) => {
         if (response === 1) {
-          res("Compañia eliminada");
+          res("Contacto eliminado");
         } else {
           rejc({
             status: 404,
-            message: "Compañia no encontrada, por favor verifique",
+            message: "Contacto no encontrado, por favor verifique",
           });
         }
       })
@@ -75,17 +75,17 @@ const findById = (req, res) => {
   });
 };
 
-const updateCompany = (id, data) => {
+const updateContact = (id, data) => {
   return new Promise((res, rejc) => {
-    companyModel
+    contactModel
       .update(data, { where: { id: id } })
       .then((response) => {
         if (response[0] === 1) {
-          res("Compañia actualizada con exito");
+          res("Contacto actualizado con exito");
         } else {
           rejc({
             status: 404,
-            message: "Datos no encontrados, no se pudo actualizar la compañia.",
+            message: "Datos no encontrados, no se pudo actualizar el contacto.",
           });
         }
       })
@@ -101,5 +101,5 @@ module.exports = {
   createContact,
   deleteContact,
   findById,
-  updateCompany,
+  updateContact,
 };

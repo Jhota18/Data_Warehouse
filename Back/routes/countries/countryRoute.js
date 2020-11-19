@@ -12,7 +12,7 @@ const {
   getCountryById,
 } = require("./countryController");
 
-router.post("/create", (req, res) => {
+router.post("/create", authentication, (req, res) => {
   const reqCountry = req.body;
   createCountry(reqCountry)
     .then((country) => {
@@ -23,7 +23,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/:regionId/countryList", (req, res) => {
+router.get("/:regionId/countryList", authentication, (req, res) => {
   let { regionId } = req.params;
   getCountries(regionId)
     .then((countries) => {
@@ -34,7 +34,7 @@ router.get("/:regionId/countryList", (req, res) => {
     });
 });
 
-router.get("/list", (req, res) => {
+router.get("/list", authentication, (req, res) => {
   getAllCountries()
     .then((response) => {
       res.status(200).json(response);
@@ -44,7 +44,7 @@ router.get("/list", (req, res) => {
     });
 });
 
-router.get("/:countryId", (req, res) => {
+router.get("/:countryId", authentication, (req, res) => {
   let country = req.params.countryId;
   getCountryById(country)
     .then((response) => {
@@ -55,7 +55,7 @@ router.get("/:countryId", (req, res) => {
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", authentication, (req, res) => {
   let id = req.params.id;
   deleteCountry(id)
     .then((response) => {
@@ -66,7 +66,7 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-router.patch("/update/:id", (req, res) => {
+router.patch("/update/:id", authentication, (req, res) => {
   let id = req.params.id;
   let data = req.body;
   updateCountry(id, data)

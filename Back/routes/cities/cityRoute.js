@@ -10,7 +10,7 @@ const {
   getCities,
 } = require("./cityController");
 
-router.post("/create", (req, res) => {
+router.post("/create", authentication, (req, res) => {
   const reqCity = req.body;
   createCity(reqCity)
     .then((city) => {
@@ -21,7 +21,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/:countryId/cityList", (req, res) => {
+router.get("/:countryId/cityList", authentication, (req, res) => {
   let { countryId } = req.params;
   getCities(countryId)
     .then((cities) => {
@@ -32,7 +32,7 @@ router.get("/:countryId/cityList", (req, res) => {
     });
 });
 
-router.get("/:cityId", (req, res) => {
+router.get("/:cityId", authentication, (req, res) => {
   let city = req.params;
   countryModel
     .findOne({ where: { id: city } })
@@ -44,7 +44,7 @@ router.get("/:cityId", (req, res) => {
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", authentication, (req, res) => {
   let id = req.params.id;
   deleteCity(id)
     .then((response) => {
@@ -55,7 +55,7 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-router.patch("/update/:id", (req, res) => {
+router.patch("/update/:id", authentication, (req, res) => {
   let id = req.params.id;
   let data = req.body;
   updateCity(id, data)

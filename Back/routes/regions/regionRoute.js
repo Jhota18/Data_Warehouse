@@ -9,7 +9,7 @@ const {
   updateRegion,
 } = require("./regionController");
 
-router.post("/create", (req, res) => {
+router.post("/create", authentication, (req, res) => {
   const reqRegion = req.body;
   createRegion(reqRegion)
     .then((region) => {
@@ -20,7 +20,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/list", (req, res) => {
+router.get("/list", authentication, (req, res) => {
   regionModel
     .findAll()
     .then((regions) => {
@@ -31,7 +31,7 @@ router.get("/list", (req, res) => {
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", authentication, (req, res) => {
   let id = req.params.id;
   deleteRegion(id)
     .then((response) => {
@@ -42,7 +42,7 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", authentication, (req, res) => {
   let id = req.params.id;
   regionModel
     .findOne({ where: { id: id } })
@@ -54,7 +54,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.patch("/update/:id", (req, res) => {
+router.patch("/update/:id", authentication, (req, res) => {
   let id = req.params.id;
   let data = req.body;
   updateRegion(id, data)

@@ -1,3 +1,16 @@
+let data = parseJwt(window.localStorage.getItem("token"));
+let token = JSON.parse(window.localStorage.getItem("token"));
+let users = document.getElementById("usersTab");
+
+if (!data) {
+  window.location = "/login.html";
+} else {
+  if (data.rol !== "Administrador") {
+    users.style.display = "none";
+  }
+}
+
+//DOM ELEMENTS
 let form = document.querySelectorAll("#userForm input,select");
 let passwordMessage = document.querySelector("#passwordMessage");
 let lackFields = document.querySelector("#lackFields");
@@ -9,7 +22,13 @@ let modalYes = document.getElementById("confirmDelete");
 
 //RENDER USERS
 let renderUsers = () => {
-  fetch("http://localhost:3000/users/list").then((userCard) => {
+  fetch("http://localhost:3000/users/list", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((userCard) => {
     console.log(userCard);
     userCard.json().then((userCard) => {
       userCard.forEach((userC) => {
@@ -80,7 +99,7 @@ let addUser = (data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((res) => {
     if (res.status === 400) {
@@ -136,7 +155,7 @@ let deleteUser = (email) => {
       body: jsonEmail,
       headers: {
         "Content-Type": "application/json",
-        //   Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
     }).then((user) => {
       location.reload();
@@ -146,7 +165,13 @@ let deleteUser = (email) => {
 
 //UPDATE USERS
 let getUserInfo = (emailValue) => {
-  fetch(`http://localhost:3000/users/user/${emailValue}`).then((user) => {
+  fetch(`http://localhost:3000/users/user/${emailValue}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  }).then((user) => {
     user.json().then((userData) => {
       const { id, name, lastname, email, rol } = userData;
       form[0].value = name;
@@ -191,7 +216,7 @@ let updateUser = (id, data) => {
     body: data,
     headers: {
       "Content-Type": "application/json",
-      //   Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   }).then((updatedUser) => {
     updatedUser.json().then((userUpd) => {

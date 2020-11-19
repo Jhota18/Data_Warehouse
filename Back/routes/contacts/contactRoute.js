@@ -9,9 +9,9 @@ const {
   deleteContact,
   updateContact,
 } = require("./contactController");
-// const { response } = require("express");
+const { response } = require("express");
 
-router.post("/create", (req, res) => {
+router.post("/create", authentication, (req, res) => {
   const contact = req.body;
   createContact(contact)
     .then((contact) => {
@@ -22,7 +22,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/list", (req, res) => {
+router.get("/list", authentication, (req, res) => {
   contactModel
     .findAll()
     .then((companies) => {
@@ -33,9 +33,9 @@ router.get("/list", (req, res) => {
     });
 });
 
-router.delete("/delete", (req, res) => {
-  let id = req.body.id;
-  deleteCompany(id)
+router.delete("/delete", authentication, (req, res) => {
+  let email = req.body.email;
+  deleteContact(email)
     .then((response) => {
       res.status(200).json(response);
     })
@@ -44,9 +44,9 @@ router.delete("/delete", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", authentication, (req, res) => {
   let id = req.params.id;
-  companyModel
+  contactModel
     .findOne({ where: { id: id } })
     .then((company) => {
       res.status(200).json(company);
@@ -56,12 +56,12 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.patch("/update/:id", (req, res) => {
+router.patch("/update/:id", authentication, (req, res) => {
   let id = req.params.id;
   let data = req.body;
-  updateCompany(id, data)
-    .then((company) => {
-      res.status(200).json(company);
+  updateContact(id, data)
+    .then((contactUpd) => {
+      res.status(200).json(contactUpd);
     })
     .catch((error) => {
       res.status(error).json(error);

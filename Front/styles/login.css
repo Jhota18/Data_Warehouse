@@ -74,4 +74,8 @@ nav .nav-link {
   background-color: #5ba4a4;
   border-color: #5ba4a4;
 }
+
+.form-container form .lackFields {
+  color: red;
+}
 /*# sourceMappingURL=login.css.map */

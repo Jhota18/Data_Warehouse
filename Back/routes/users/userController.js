@@ -51,11 +51,16 @@ const login = (email, password) => {
       rejc({ status: 406, message: "Faltan campos, por favor envielos" });
     } else {
       let user = await usersModel.findOne({ where: { email: email } });
-      let comparePassword = bcrypt.compare(password, user.password);
+      let comparePassword = await bcrypt.compare(password, user.password);
+      console.log(comparePassword);
 
       if (user && comparePassword) {
         delete user.password;
-        res(jwt.sign(user, process.env.S));
+        res(
+          jwt.sign(user, process.env.S, {
+            expiresIn: "1h",
+          })
+        );
       } else {
         rejc({ status: 401, message: `Usuario o contraseña no validos` });
       }

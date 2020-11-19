@@ -96,7 +96,7 @@ main .firstSect button:hover {
 main .usersTitles {
   display: -ms-grid;
   display: grid;
-  margin-top: 40px;
+  margin-top: 80px;
   -ms-grid-columns: 5% 25% 25% 20% 20% 5%;
       grid-template-columns: 5% 25% 25% 20% 20% 5%;
 }

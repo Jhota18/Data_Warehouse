@@ -116,6 +116,11 @@ main .firstSect .modal-content .modal-body .rangeCont .inputRangeN {
   max-width: 80px;
 }
 
+main .firstSect .modal-content .modal-body .rangeCont .percent {
+  margin-top: 28px;
+  margin-left: -65px;
+}
+
 main .firstSect button {
   float: right;
   background-color: #5ba4a4;
@@ -130,7 +135,7 @@ main .firstSect button:hover {
 main .titles {
   display: -ms-grid;
   display: grid;
-  margin-top: 30px;
+  margin-top: 80px;
   -ms-grid-columns: 5% 20% 15% 15% 18% 15% 12%;
       grid-template-columns: 5% 20% 15% 15% 18% 15% 12%;
 }
@@ -368,6 +373,7 @@ main .contact .email {
   margin-right: 20px;
   text-align: center;
   color: gray;
+  margin-top: 14px;
 }
 
 main .contact .country {
@@ -386,7 +392,7 @@ main .contact .region {
   grid-column: 3/4;
   -ms-grid-row: 2;
   grid-row: 2/2;
-  margin-top: -2px;
+  margin-top: 14px;
   color: gray;
 }
 

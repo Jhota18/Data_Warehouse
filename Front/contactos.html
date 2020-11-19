@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a class="nav-link" href="companias.html">Compañías</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="usersTab">
             <a class="nav-link" href="usuarios.html">Usuarios</a>
           </li>
           <li class="nav-item">
@@ -45,13 +45,14 @@
     <main>
       <section class="firstSect">
         <h1>CONTACTOS</h1>
-        <input type="text" class="searchInput" />
-        <i class="fas fa-search"></i>
+        <!-- <input type="text" class="searchInput" />
+        <i class="fas fa-search"></i> -->
         <button
           type="submit"
           class="btn btn-primary"
           data-toggle="modal"
           data-target="#addContact"
+          id="openContact"
         >
           Agregar contacto
         </button>
@@ -160,30 +161,19 @@
                     </div>
                     <div class="form-group col-md-6 rangeCont">
                       <label for="inputRangeN"><b>Interés</b></label>
-                      <!-- <input
-                        type="range"
-                        class="form-control-range"
-                        id="inputInterest"
-                      /> -->
                       <select id="inputRangeN" class="form-group inputRangeN">
-                        <option selected>0%</option>
-                        <option>25%</option>
-                        <option>50%</option>
-                        <option>75%</option>
-                        <option>100%</option>
+                        <option selected>0</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>75</option>
+                        <option>100</option>
                       </select>
+                      <p class="percent"><b>%</b></p>
                     </div>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <!-- <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Limpiar
-                </button> -->
                 <p id="lackFields" class="lackFields"></p>
                 <button
                   type="button"
@@ -199,6 +189,49 @@
         </div>
       </section>
       <section class="contactList">
+        <div
+          class="modal fade"
+          id="deleteContactConfirm"
+          data-toggle="modal"
+          tabindex="-1"
+          aria-labelledby="deleteConfirmLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmLabel">
+                  ¿Está seguro que desea eliminar el contacto?
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="confirmDelete"
+                  data-dismiss="modal"
+                >
+                  SI
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  NO
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="titles">
           <input type="checkbox" class="select" />
           <div class="contactTitle">
@@ -239,7 +272,7 @@
           <h3 class="actionsTitle">Acciones</h3>
         </div>
         <div id="contactsContainer">
-          <div class="contact">
+          <!-- <div class="contact">
             <input type="checkbox" class="selectCont" />
             <h3 class="name">Juan Arisitzabal</h3>
             <p class="email">juan@correo.com</p>
@@ -259,14 +292,9 @@
             </div>
             <i class="fas fa-edit"></i>
             <i class="far fa-trash-alt"></i>
-          </div>
-          <div class="contact">
+          </div> -->
+          <!-- <div class="contact">
             <input type="checkbox" class="selectCont" />
-            <!-- <img
-              src="img/kisspng-computer-icons-united-states-of-america-user-avata-facial-hair-man-avatar-profile-people-user-b-5bfccdf4d0c0f6.5923136715432944528551.jpg"
-              alt=""
-              class="photo"
-            /> -->
             <h3 class="name">Alejandro Gomez</h3>
             <p class="email">alejandro@correo.com</p>
             <h3 class="country">Colombia</h3>
@@ -285,7 +313,7 @@
             </div>
             <i class="fas fa-edit"></i>
             <i class="far fa-trash-alt"></i>
-          </div>
+          </div> -->
         </div>
       </section>
     </main>
@@ -299,6 +327,7 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="script/jwt.js"></script>
     <script src="script/contacts/sortContacts.js"></script>
     <script src="script/contacts/contacts.js"></script>
   </body>

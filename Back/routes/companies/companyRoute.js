@@ -12,7 +12,7 @@ const {
 } = require("./companyController");
 const { response } = require("express");
 
-router.post("/create", (req, res) => {
+router.post("/create", authentication, (req, res) => {
   const reqCompany = req.body;
   createCompany(reqCompany)
     .then((company) => {
@@ -23,7 +23,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-router.get("/list", (req, res) => {
+router.get("/list", authentication, (req, res) => {
   companyModel
     .findAll()
     .then((companies) => {
@@ -34,7 +34,7 @@ router.get("/list", (req, res) => {
     });
 });
 
-router.delete("/delete", (req, res) => {
+router.delete("/delete", authentication, (req, res) => {
   let id = req.body.id;
   deleteCompany(id)
     .then((response) => {
@@ -45,7 +45,7 @@ router.delete("/delete", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", authentication, (req, res) => {
   let id = req.params.id;
   companyModel
     .findOne({ where: { id: id } })
@@ -57,7 +57,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.patch("/update/:id", (req, res) => {
+router.patch("/update/:id", authentication, (req, res) => {
   let id = req.params.id;
   let data = req.body;
   updateCompany(id, data)

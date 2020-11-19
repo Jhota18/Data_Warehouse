@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a class="nav-link" href="companias.html">Compañías</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="usersTab">
             <a class="nav-link" href="usuarios.html">Usuarios</a>
           </li>
           <li class="nav-item">
@@ -45,8 +45,8 @@
     <main>
       <section class="firstSect">
         <h1>USUARIOS</h1>
-        <input type="text" class="searchUsersInput" />
-        <i class="fas fa-search"></i>
+        <!-- <input type="text" class="searchUsersInput" />
+        <i class="fas fa-search"></i> -->
         <button
           type="submit"
           class="btn btn-primary"
@@ -142,15 +142,7 @@
                   <p id="lackFields" class="lackFields"></p>
                 </form>
               </div>
-              <div class="modal-footer">
-                <!-- <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Limpiar
-                </button> -->
-              </div>
+              <div class="modal-footer"></div>
             </div>
           </div>
         </div>
@@ -301,6 +293,7 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="script/jwt.js"></script>
     <script src="script/users/sortUsers.js"></script>
     <script src="script/users/users.js"></script>
   </body>

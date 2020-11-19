@@ -105,6 +105,10 @@ main {
             margin-top: 28px;
             max-width: 80px;
           }
+          .percent {
+            margin-top: 28px;
+            margin-left: -65px;
+          }
         }
       }
     }
@@ -122,7 +126,7 @@ main {
 
   .titles {
     display: grid;
-    margin-top: 30px;
+    margin-top: 80px;
     grid-template-columns: 5% 20% 15% 15% 18% 15% 12%;
 
     .select {
@@ -277,6 +281,7 @@ main {
       margin-right: 20px;
       text-align: center;
       color: gray;
+      margin-top: 14px;
     }
     .country {
       grid-column: 3/4;
@@ -287,7 +292,7 @@ main {
     .region {
       grid-column: 3/4;
       grid-row: 2/2;
-      margin-top: -2px;
+      margin-top: 14px;
       color: gray;
     }
     .company {
