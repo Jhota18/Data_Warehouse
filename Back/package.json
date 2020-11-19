@@ -1,5 +1,5 @@
 {
-  "name": "back",
+  "name": "datawarehouse",
   "version": "1.0.0",
   "description": "herramienta que permite a una compañia de marketing administrar todos los contactos de sus clientes para sus campañas.",
   "main": "server.js",
