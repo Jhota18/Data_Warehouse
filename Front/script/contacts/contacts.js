@@ -124,7 +124,6 @@ let getContactData = () => {
   };
 
   let data = JSON.stringify(data2);
-  console.log(data);
   addContact(data);
 };
 
@@ -147,7 +146,6 @@ let addContact = (data) => {
         "*Tenemos problemas en el servidor, por favor intente mas tarde";
     } else {
       res.json().then((info) => {
-        console.log(info);
         const {
           id,
           name,

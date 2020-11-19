@@ -24,7 +24,6 @@ let login = () => {
   };
 
   let data = JSON.stringify(data2);
-  console.log(data);
 
   fetch("http://localhost:3000/users/login", {
     method: "POST",

@@ -15,8 +15,6 @@
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.12",
-    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
     "sequelize": "^6.3.5"
