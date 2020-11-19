@@ -7,7 +7,7 @@ const authorization = require("../../middlewares/authorization");
 const { createUser, login, deleteUser, updateP } = require("./userController");
 const { response } = require("express");
 
-router.post("/signup", (req, res) => {
+router.post("/signup", authentication, authorization, (req, res) => {
   const reqUser = req.body;
   createUser(reqUser)
     .then((user) => {

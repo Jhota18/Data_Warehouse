@@ -52,7 +52,6 @@ const login = (email, password) => {
     } else {
       let user = await usersModel.findOne({ where: { email: email } });
       let comparePassword = await bcrypt.compare(password, user.password);
-      console.log(comparePassword);
 
       if (user && comparePassword) {
         delete user.password;
